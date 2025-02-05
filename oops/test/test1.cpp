@@ -1,15 +1,27 @@
 #include <iostream>
 using namespace std;
 
-int calc(int a=10){
-    return 10; 
+void over(int i){
+    cout << "Integer : " << i << endl;
 }
-
-int calc(float a){
-    return 11;
+void over(float f){
+    cout << "Float : " << f << endl;
+}
+void over(double d){
+    cout << "double : " << d << endl;
+}
+void over(char c){
+    cout << "Character : " << c << endl;
+}
+void over(string s){
+    cout << "String : " << s << endl;
 }
 
 int main(){
-    cout << calc() << endl;
+    over(10);
+    over(10.0f);
+    over(10.0);
+    over('a');
+    over("abc");
     return 0;
 }

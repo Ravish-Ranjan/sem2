@@ -12,6 +12,7 @@ class Bottle{
         }
         ~Bottle(){
             cout << this->color << " colored bottle with " << this->volume << " ml volume destructed" << endl;
+
         }
         void show(){
             cout << "Color : " << this->color << "\t Volume : " << this->volume << endl;
@@ -23,8 +24,5 @@ int main(){
     b1.show();
     Bottle b2("blue",2000.0);
     b2.show();
-    cout << "manual destruction" << endl;
-    b1.~Bottle();
-    b1.show();
     return 0;
 }
