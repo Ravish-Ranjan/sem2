@@ -48,7 +48,7 @@ int main(){
     cin >> size;
     int arr[size];
     for (int i = 0; i < size; i++){
-        cout << "Arr["<< i <<"] : ";
+        cout << "Arr["<< i+1 <<"] : ";
         cin >> arr[i];
     }
     cout << "\nBefore sorting : ";
