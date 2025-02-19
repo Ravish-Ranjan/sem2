@@ -1,3 +1,8 @@
+ch = input("Are you sure (Y/n): ")
+if (ch != "Y"):
+    exit(0)
+
+
 import mysql.connector
 import json
 

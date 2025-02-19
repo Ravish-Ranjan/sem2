@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int sum(int a,int b){
-    return a + b; 
+int sum(int a,int b,int c = 10){
+    return a + b + c; 
 }
 
 int main(){

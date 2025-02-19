@@ -1,19 +1,27 @@
 #include <iostream>
 using namespace std;
 
-int* expo(int num){
-    int* res = new int[2];
-    res[0] = num*num;
-    res[1] = num*num*num;
-    return res;
-}
+class cls_expo{
+    private:
+        int num;
+    public:
+        cls_expo(int n){
+            this->num = n;
+        }      
+        int square(){
+            return this->num*this->num;
+        }
+        int cube(){
+            return this->num*this->num*this->num;
+        }
+};
 
 int main(){
     int num;
     cout << "Enter a number : ";
     cin >> num;
-    int* res = expo(num);
-    cout << "Square of " << num << " is " << res[0] << endl;
-    cout << "Cube of " << num << " is " << res[1];
+    cls_expo obj(num);
+    cout << "Square of " << num << " is " << obj.square() << endl;
+    cout << "Cube of " << num << " is " << obj.cube();
     return 0;
 }

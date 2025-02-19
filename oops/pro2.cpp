@@ -9,5 +9,3 @@ int main(){
     cout << "Sum till number : " << sum << endl;
     return 0;
 }
-// << cascading operator
-// :: score var
