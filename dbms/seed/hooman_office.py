@@ -37,3 +37,5 @@ cur.execute(office_qry,data["office"])
 CON.commit()
 
 print(cur.rowcount, "record inserted.")
+
+# insert into employee (fullname,dob,gender,phoneno,address,salary,role,department,date_of_joining,head_quater) values("Ravish Ranjan","2003-07-29","M","8860719430","G-4/10,Sector-15,Rohini,Delhi",40000.0,"manager","HR","2023-01-01",1);
