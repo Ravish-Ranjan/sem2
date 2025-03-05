@@ -21,6 +21,5 @@ class Student{
 int main(){
     Student first("Ravish Ranjan",240484);
     first.show();
-
     return 0;
 }
