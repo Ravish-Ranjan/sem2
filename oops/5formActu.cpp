@@ -1,7 +1,10 @@
 #include <iostream>
 using namespace std;
 
-int sum(int a,int b,int c = 10){
+int sum(
+    /* formal parameters */int a,int b,
+    /* default parameters */int c = 10
+    ){
     return a + b + c; 
 }
 
@@ -11,6 +14,6 @@ int main(){
     cin >> x;
     cout << "Second number : ";
     cin >> y;
-    cout << "Sum : " << sum(x,y);
+    cout << "Sum : " << sum(/* actual parameters */x,y);
     return 0;
 }
