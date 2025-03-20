@@ -1,0 +1,125 @@
+experiment 1:
+	3. insert into instructor values("10211","Smith","Biology",66000);
+	4. delete from instructor where id="10211";
+	5. select * from instructor where dept_name="History";
+	6. select * from instructor cross join teaches;
+	7. select I.name, T.course_id 
+	   from instructor I 
+	   join teaches T 
+	   on I.id=T.id;
+	8. select name from instructor where name like "%dar%";
+	9. select name from instructor 
+	   where salary between 90000 and 100000;
+
+experiment 2:
+	1. select * from instructor order by salary;
+	2. select course_id 
+	   from teaches 
+	   where ( semester="Fall" and year=2017 ) 
+	   or ( semester="Spring" and year=2018 );
+	3. select t1.course_id 
+	   from teaches t1 
+	   join teaches t2 
+	   on t1.course_id=t2.course_id 
+	   where (t1.semester="Fall" and t1.year=2017) 
+	   and (t2.semester="Spring" and t2.year=2018);
+	4. select distinct course_id from teaches 
+	   where (semester="Fall" and year=2017) 
+	   and course_id not in (
+		select course_id from teaches 
+		where semester="Spring" and year=2018
+	   );
+	5. insert into instructor values
+		("10211","Smith","Biology",66000),
+		("10212","Tom","Biology",NULL);
+	6. select * from instructor where salary is NULL;
+
+experiment 3:
+	1. select count(distinct id) as spring_2018_inst_count 
+	   from teaches 
+  	   where semester="Spring" and year=2018;
+	2. select count(*) from teaches;
+	3. select avg(salary) from instructor 
+	   group by dept_name;
+	4. select dept_name,avg(salary) 
+	   from instructor 
+	   group by dept_name 
+	   having avg(salary) > 42000;
+	5. select name from instructor 
+	   where name not in ("Mozart","Einstein")
+	6. select name from instructor 
+	   where salary > any (
+		select salary from instructor 
+		where dept_name="Biology" 
+		and salary is not null
+	   );
+	7. select name from instructor 
+	   where salary > all (
+		select salary from instructor 
+		where dept_name="Biology" 
+		and salary is not null
+	   );
+	8. select avg(salary) from instructor 
+	   group by dept_name 
+	   having avg(salary) > 42000;
+
+experiment 4.
+	1. select dept_name,sum(salary) as dept_sal
+    	   from instructor
+    	   group by dept_name
+    	   having sum(salary) > (
+    		select avg(total_dept_sal)
+                from (
+                        select sum(salary) as total_dept_sal
+                        from instructor
+                        group by dept_name
+                ) as dept_sal
+       	   );
+	2. select I.name, T.course_id
+    	   from instructor I
+    	   join teaches T
+    	   on I.id=T.id;
+	3. select I.name,T.course_id
+    	   from instructor I
+    	   left join teaches T
+    	   on I.id=T.id;
+	4. create view faculty as 
+	   select id, name, dept_name from instructor;
+	5. create user if not exists 'new_user'@'localhost' identified by '12345678';
+	   grant select on teacher.faculty to 'newuser'@'localhost';
+	
+experiment 5.
+	1. create view faculty as 
+	   select id, name, dept_name from instructor;
+	2. create view dept_sal as 
+	   select dept_name,sum(salary) as sal_total 
+	   from instructor 
+	   group by dept_name;
+	3. create role if not exists 'student';
+	4. grant select on teacher.faculty to student;
+	5. create user if not exists 'new_user'@'localhost' identified by '12345678';
+	   grant 'student' to 'new_user'@'localhost';
+	6. select * from faculty where dept_name="Biology";
+	7. revoke all privileges, grant option from 'new_user'@'localhost';
+	8. drop role 'student'@'localhost';
+	9. grant select on teacher.faculty to 'new_user'@'localhost';
+	10.select name from faculty where dept_name="Finance";
+	11.mysql -u root -p
+	   wrogn
+	12.(in lab manual.txt)
+	13.create index idx_id on teaches(id);
+		before indexing
+			select i.name, t.course_id, t.semester, t.year
+    			from instructor i
+    			join teaches t 
+			on i.id = t.id
+    			where t.id = 10101;
+			(time taken : 0.01sec)
+		after indexing
+			select i.name, t.course_id, t.semester, t.year
+    			from instructor i
+    			join teaches t 
+			on i.id = t.id
+    			where t.id = 10101;
+			(time taken : 0.00sec)
+	14.drop index idx_id on teaches;

@@ -1,0 +1,63 @@
+create table instructor(
+	id varchar(5) primary key unique,
+	name varchar(24) not null,
+	dept_name varchar(20) not null,
+	salary int not null,
+	unique (id)
+);
+
+create table teaches(
+	id varchar(5) not null,
+	course_id varchar(20) not null,
+	sec_id int not null,
+	semester varchar(12) not null,
+	year year not null,
+	foreign key (id) references instructor (id) on delete cascade
+);
+
+create table teaches2(
+	id varchar(5) not null,
+	course_id varchar(20) not null,
+	sec_id int not null,
+	semester enum("fall","winter","spring","summer") not null,
+	year year not null,
+	foreign key (id) references instructor (id) on delete cascade
+);
+
+insert into instructor values(10101,"Srinivasan","Comp. Sci.",65000),
+("12121","Wu","Finance",90000),
+("15151","Mozart","Music",40000),
+("22222","Einstein","Physics",95000),
+("32343","El Said","History",60000),
+("33456","Gold","Physics",87000),
+("45565","Katz","Comp. Sci.",75000),
+("58583","Califieri","History",62000),
+("76543","Singh","Finance",80000),
+("76766","Crick","Biology",72000),
+("83821","Brandt","Comp. Sci.",92000),
+("98345","Kim","Elec. Eng.",80000);
+
+insert into teaches values(10101,"CS-101",1,"Fall",2017),
+("10101","CS-315",1,"Spring",2018),
+("10101","CS-347",1,"Fall",2017),
+("12121","FIN-201",1,"Spring",2018),
+("15151","MU-199",1,"Spring",2018),
+("22222","PHY-101",1,"Fall",2017),
+("32343","HIS-351",1,"Spring",2018),
+("45565","CS-101",1,"Spring",2018),
+("45565","CS-319",1,"Spring",2018),
+("76766","BIO-101",1,"Summer",2017),
+("76766","BIO-301",1,"Summer",2018),
+("83821","CS-190",1,"Spring",2017),
+("83821","CS-190",2,"Spring",2017),
+("83821","CS-319",2,"Spring",2018),
+("98345","EE-181",1,"Spring",2017);
+
+
+
+
+theta, left right natural
+natural attribute
+left right null
+right left null
+equi join value match and truncate
