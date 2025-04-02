@@ -15,10 +15,11 @@ void showInfo(double salary){
 }
 
 int main(){
+    cout << "---------------------------------" << endl;
     cout << "This is compile time polymorphism" << endl;
     cout << "---------------------------------" << endl;
     showInfo(21);
     showInfo("Ravish Ranjan");
-    showInfo("5467.8");
+    showInfo("1234.5");
     return 0;
 }

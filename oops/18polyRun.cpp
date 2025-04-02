@@ -21,7 +21,9 @@ int main(){
     Child obj2;
 
     obj1 = &obj2;
-
+    cout << "---------------------------------" << endl;
+    cout << "This is run time polymorphism" << endl;
+    cout << "---------------------------------" << endl;
     obj1->show();
     obj2.show();
     obj3.show();
