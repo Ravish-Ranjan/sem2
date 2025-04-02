@@ -28,10 +28,10 @@ int main() {
     Bottle bt2(700.0,"Blue");
     Bottle bt3 = bt1 + bt2;
     Bottle bt4 = bt1 - bt2;
+    Bottle bt5 = bt2 - bt1;
 
     bt3.show();
     bt4.show();
-    Bottle bt5 = bt2 - bt1;
     bt5.show();
     return 0;
 }
