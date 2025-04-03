@@ -6,7 +6,7 @@ class Bottle{
         int volume;
         string color;
     public:
-        Bottle(double v,string c) : volume(v),color(c){}
+        Bottle(int v,string c) : volume(v),color(c){}
 
         Bottle operator+(const Bottle&vl){
             return Bottle(volume + vl.volume,color);
@@ -24,8 +24,8 @@ class Bottle{
 };
 
 int main() {
-    Bottle bt1(1000.0,"Red");
-    Bottle bt2(700.0,"Blue");
+    Bottle bt1(1000,"Red");
+    Bottle bt2(700,"Blue");
     Bottle bt3 = bt1 + bt2;
     Bottle bt4 = bt1 - bt2;
     Bottle bt5 = bt2 - bt1;
