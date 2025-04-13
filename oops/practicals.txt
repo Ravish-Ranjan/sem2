@@ -1,0 +1,42 @@
+Que1.  * write a program to define class and how to create objects in oops?
+Que2.  * Write a program to find sum of first n natural numbers?
+Que3.  * Write a program to show the use of namespace?
+Que4.  * Write a program to find square and cube of number using class?
+Que5.  * Write a program using formal and actual parameters?
+Que6.  * Write a program to implement constructor and destructor?
+Que7.  * Write a program to define constructor overloading?
+Que8.  * Write a program to implement single inheritance?
+Que9.  * Write a program to implement inheritance (3-level)?
+Que10. * Write a program to implement multiple inheritance?
+Que11. * Write a program to print pointer with the help of references?
+
+
+
+// to write
+* 1.  Write a program to define Class
+* 2.  Write a program to find sum of First n natural Number
+* 3.  Write a program to define a namespace
+* 4.  Write a program to find Square and Cube using Class
+* 5.  Write a program to show default, formal and actual parameters of a function.
+* 6.  Write a program to illustrate the use of constructor and destructor.
+* 7.  Write a program to find Area of Rectangle using Class
+* 8.  Write a program to illustrate default constructor.
+* 9.  Write a program to show single inheritance
+* 10. Write a program to show multiple inheritance
+* 11. Write a program to show multi level inheritance
+* 12. Write a program to print pointer with the help of references?
+* 13. Write a program which shows the utility of inline function?
+* 14. Write a program for function overloading?
+* 15. Write a program to illustrate friend function?
+* 16. Write a program to illustrate constructor overloading?
+* 17. Write a program to illustrate compile time polymorphism?
+* 18. Write a program to illustrate run time polymorphism?
+* 19. Write a program to illustrate operator overloading?
+20. Write a program to define virtual pure function?
+21. Write a program for unary and binary overloading?
+22. Write a program for implementation of exception handling?
+23. Write a program to explain class template using template function?
+24. Write a program for multiple templates?
+25. Write a program for none type template function?
+
+	pure virtual function is that function that has no body in the base class . in this we declare prototype. it isused to satisfiy the compiler. this is defined inside its derived class
