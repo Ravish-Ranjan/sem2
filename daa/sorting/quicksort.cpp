@@ -30,9 +30,8 @@ void quicksort(int arr[],int l,int h){
 
 void print(int arr[],int size){
     cout << "Array : ";
-    for (int i = 0; i < size; i++){
+    for (int i = 0; i < size; i++)
         cout << arr[i] << " ";
-    }
     cout << endl;
 }
 

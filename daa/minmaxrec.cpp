@@ -2,13 +2,11 @@
 using namespace std;
 
 int min(int a,int b){
-    if (a < b) return a;
-    return b;
+    return (a < b)? a:b;
 }
 
 int max(int a,int b){
-    if (a < b) return b;
-    return a;
+    return (a > b)? a:b;
 }
 
 int* minmax(int arr[],int l,int h){
@@ -16,7 +14,7 @@ int* minmax(int arr[],int l,int h){
         int* res = new int[2]{arr[l],arr[l]};
         return res;
     } else if (h == l+1) {
-        int* res = new int[2]{arr[l],arr[h]};
+        int* res = new int[2]{min(arr[l],arr[h]),max(arr[l],arr[h])};
         return res;
     }
     int mid = (l+h)/2;

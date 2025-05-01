@@ -23,9 +23,7 @@ class Sack{
                 objects = new Object[size];
             }
         }
-        ~Sack(){
-            delete objects;
-        }
+        ~Sack(){ delete objects;}
         int add(Object obj){
             if ((obj.weight <= capacity) && (capacity > 0)){
                 count += 1;
@@ -74,8 +72,7 @@ void sortObjects(Object* objects, int obj_count){
 }
 
 int main(){
-    int sack_size = 0;
-    int obj_count = 0;
+    int sack_size = 0, obj_count = 0;
     
     cout << "Enter the sack capacity : ";
     cin >> sack_size;
@@ -87,8 +84,7 @@ int main(){
     
     Object objects[obj_count];
     string name;
-    double weight;
-    double prize;
+    double weight,prize;
 
     for (int i = 0; i < obj_count; i++){
         cout << "Object name : ";
@@ -102,18 +98,16 @@ int main(){
     
     sortObjects(objects,obj_count);
     
-    int res = true;
-    int at = 0;
+    int res = true,at = 0;
 
     do{
         res = sk.add(objects[at]);
-        if (res > 0 ){
+        if (res > 0 )
             cout << "Object  " << objects[at].name << " added fully" << endl;
-        } else if(res == 0){
+        else if(res == 0)
             cout << "Object  " << objects[at].name << " added partially" << endl;
-        } else if (res < 0){
+        else if (res < 0)
             cout << "Object  " << objects[at].name << " not added" << endl;
-        }
         at++;
     } while (res && at < obj_count);
 

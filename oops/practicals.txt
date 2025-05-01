@@ -32,11 +32,11 @@ Que11. * Write a program to print pointer with the help of references?
 * 17. Write a program to illustrate compile time polymorphism?
 * 18. Write a program to illustrate run time polymorphism?
 * 19. Write a program to illustrate operator overloading?
-20. Write a program to define virtual pure function?
-21. Write a program for unary and binary overloading?
-22. Write a program for implementation of exception handling?
-23. Write a program to explain class template using template function?
-24. Write a program for multiple templates?
+* 20. Write a program to define virtual pure function?
+* 21. Write a program for unary and binary overloading?
+* 22. Write a program for implementation of exception handling?
+* 23. Write a program to explain class template using template function?
+* 24. Write a program for multiple templates?
 25. Write a program for none type template function?
 
 	pure virtual function is that function that has no body in the base class . in this we declare prototype. it isused to satisfiy the compiler. this is defined inside its derived class
