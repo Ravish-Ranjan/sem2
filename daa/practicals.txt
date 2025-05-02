@@ -1,0 +1,19 @@
+Divide And Conquer
+* Selection Sort
+* Merge Sort
+* Quick Sort
+* Min-Max Problem
+
+Greedy Algo
+* Fractional Knapsack Problem 
+ Dijkstra Algo
+ Job sequencing with deadlines
+
+DP
+* 0/1 Knapsack Problem
+ Travelling Salesman Problem
+* Longest common subsequence
+
+BackTracking
+ 8 Queens Problem
+ Graph Coloring
