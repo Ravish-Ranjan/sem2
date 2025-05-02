@@ -37,6 +37,6 @@ Que11. * Write a program to print pointer with the help of references?
 * 22. Write a program for implementation of exception handling?
 * 23. Write a program to explain class template using template function?
 * 24. Write a program for multiple templates?
-* 25. Write a program for none type template function?
+* 25. Write a program for non-type template function?
 
 	pure virtual function is that function that has no body in the base class . in this we declare prototype. it isused to satisfiy the compiler. this is defined inside its derived class
