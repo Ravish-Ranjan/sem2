@@ -16,4 +16,4 @@ DP
 
 BackTracking
  8 Queens Problem
- Graph Coloring
+* Graph Coloring
