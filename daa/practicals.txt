@@ -11,9 +11,9 @@ Greedy Algo
 
 DP
 * 0/1 Knapsack Problem
- Travelling Salesman Problem
+* Travelling Salesman Problem
 * Longest common subsequence
 
 BackTracking
- 8 Queens Problem
+* 8 Queens Problem
 * Graph Coloring
