@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-#define N 8
+
+int N = 0;
 
 bool isSafe(int** board,int r,int c){
     for (int i = 0; i < c; i++){
@@ -40,6 +41,14 @@ bool solve8Queens(int** board,int col){
 }
 
 int main(){
+    cout << "Enter the size of the chess board(1-8) : ";
+    cin >> N;
+
+    if (N > 8 || N < 1){
+        cout << "Board size not in range :(" << endl;
+        return 0;
+    }
+
     int** board = new int*[N];
     for (int i = 0; i < N; i++) {
         board[i] = new int[N];
