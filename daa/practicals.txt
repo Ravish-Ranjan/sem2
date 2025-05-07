@@ -6,8 +6,8 @@ Divide And Conquer
 
 Greedy Algo
 * Fractional Knapsack Problem 
- Dijkstra Algo
- Job sequencing with deadlines
+* Dijkstra Algo
+* Job sequencing with deadlines
 
 DP
 * 0/1 Knapsack Problem

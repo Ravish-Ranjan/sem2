@@ -15,7 +15,7 @@ class Sack{
         int capacity = 0;
         Object* objects = nullptr;
         int count = 0;
-        int prize = 0;
+        double prize = 0;
     public:
         Sack(int size) : objects(nullptr) {
             if (size >= 0) {

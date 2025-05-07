@@ -8,8 +8,8 @@ int lcsRec(string str1,string str2,int m,int n,int** memo){
     if (memo[m][n] != -1)
         return memo[m][n];
 
-    if (str1[m] == str2[n])
-        return 1 + lcsRec(str1,str2,m-1,n-1,memo);
+    if (str1[m-1] == str2[n-1])
+        return memo[m][n] = 1 + lcsRec(str1,str2,m-1,n-1,memo);
 
     memo[m][n] = max(lcsRec(str1,str2,m,n-1,memo),lcsRec(str1,str2,m-1,n,memo));
     return memo[m][n];

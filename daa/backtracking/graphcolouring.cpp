@@ -35,7 +35,8 @@ bool graphColouring(int** adj,int V,int count){
     cout << "Solution exists : " ;
     for (int i = 0; i < V; i++)
         cout << colours[i] << " ";
-    cout << endl;    
+    cout << endl;   
+    delete[] colours; 
     return true;
 }
 
@@ -43,19 +44,18 @@ int main(){
     int V = 0,c = 0;
     cout << "Enter the no. of vertices : ";
     cin >> V;
-
     cout << "Enter the no. of colours : ";
     cin >> c;
 
     int** adj = new int*[V];
     for (int i = 0; i < V; i++) {
         adj[i] = new int[V];
-        for (int j = 0; j < V; j++) {
-            adj[i][j] = 0; // Initialize all elements to 0
-        }
+        for (int j = 0; j < V; j++)
+            adj[i][j] = 0; 
     }
 
     int e;
+    cout << "Enter 1 if edge exists else 0" << endl;
     for (int i = 0; i < V; i++) {
         for (int j = i + 1; j < V; j++) {
             cout << "from " << i + 1 << " to " << j + 1 << " : ";
@@ -66,10 +66,8 @@ int main(){
 
     graphColouring(adj, V, c);
 
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; i++)
         delete[] adj[i];
-    }
     delete[] adj;
-
     return 0;    
 }
