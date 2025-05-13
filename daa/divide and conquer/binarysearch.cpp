@@ -29,7 +29,7 @@ int main(){
     cout << "Enter the element you want to search : ";
     cin >> item;
 
-    int res = binarySearch(arr,0,4,10);
+    int res = binarySearch(arr,0,s-1,item);
 
     if(res < 0)
         cout << "Item " << item << " not found" << endl;
