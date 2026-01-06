@@ -1,3 +1,8 @@
+main
+daa/input/*.txt
+daa/images/*.png
+daa/output/*.csv
+
 # Prerequisites
 *.d
 

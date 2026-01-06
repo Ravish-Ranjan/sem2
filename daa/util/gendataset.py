@@ -111,7 +111,6 @@ for t,unique in types:
                 inputs.append(random.choices(UPPERCHARS,k=size))
             continue
 
-print(inputs)
 
 fileName+=f"-{size}-size-"
 fileName+=str(datetime.now().strftime("%d-%m-%Y-%H-%M-%S"))
