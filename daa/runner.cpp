@@ -1,4 +1,10 @@
+#ifndef RUNNER_CPP
+#define RUNNER_CPP
+
+#include "input.cpp"
+#include "output.cpp"
 #include <vector>
+#include <string>
 #include <chrono>
 #include <functional>
 
@@ -26,3 +32,22 @@ class Runner{
             return avg/this->timeTakes.size();
         }
 };
+
+template <typename inputParseType,typename Func>
+std::vector<double> analyzer(std::string inputTypes,Func algo,std::string inpFN = "input-data"){
+    std::vector<double> timeAvgs;
+    for (int size = 10; size<=100; size+=10){
+        Input inp(size,inputTypes,inpFN);
+        Runner runner(algo);
+        for (int i = 0; i<10; i++){
+            inp.genInput();
+            std::vector<inputParseType> copy = parse<inputParseType>(inp.input[0]);
+            runner.run(copy);
+        }
+        timeAvgs.push_back(runner.getAvgTime());
+    }
+    Output output(inpFN);
+    output.genGraph(timeAvgs);
+    return timeAvgs;
+}
+#endif

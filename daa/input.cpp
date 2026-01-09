@@ -1,10 +1,11 @@
+#ifndef INPUT_CPP
+#define INPUT_CPP
+
+#include "./util/command.cpp"
 #include <vector>
 #include <string>
 #include <functional>
 #include <iostream>
-#include <cstdio>
-#include <memory>
-#include <array>
 #include <fstream>
 #include <sstream>
 #include <variant>
@@ -41,35 +42,19 @@ class Input{
         int inputSize = 10;
         std::string inputFile = "";
         std::string inputTypes = "int";
+        std::string inputFileName = "input-data";
     public:
         std::vector<T> input;
-        Input(int inputSize = 10,std::string inputTypes = "int"):inputSize(inputSize),inputTypes(inputTypes){}
+        Input(int inputSize = 10,std::string inputTypes = "int",std::string inpFN = "input-data"):inputSize(inputSize),inputTypes(inputTypes),inputFileName(inpFN){}
         
         void genInput(){
+            this->input.clear();
             std::string sizeArgv = "size:" + std::to_string(this->inputSize);
             std::string inputTypesArgv = "types:" + this->inputTypes;
-            std::string cmd = "python3 util/gendataset.py " + sizeArgv + " " + inputTypesArgv;
-            this->genInputFile(cmd);
+            std::string inputFileNameArgv = "filename:" + this->inputFileName;
+            std::string cmd = "python3 util/gendataset.py " + sizeArgv + " " + inputTypesArgv + " " + inputFileNameArgv;
+            this->inputFile = runCommand(cmd);
             this->getInput();
-        }
-        
-        void genInputFile(const std::string& cmd) {
-            std::array<char, 256> buffer;
-            std::string result;
-        
-            FILE* pipe = popen(cmd.c_str(), "r");
-            if (!pipe) throw std::runtime_error("popen failed");
-        
-            while (fgets(buffer.data(), buffer.size(), pipe)) {
-                result += buffer.data();
-            }
-        
-            pclose(pipe);
-        
-            if (!result.empty() && result.back() == '\n')
-                result.pop_back();
-        
-            this->inputFile = result;
         }
         
         Token parseToken(const std::string& token) {
@@ -88,7 +73,6 @@ class Input{
             std::string line;
             std::vector<std::vector<Token>> tempRows;
         
-            // First, read all rows normally
             while (std::getline(file, line)) {
                 std::stringstream ss(line);
                 std::string token;
@@ -101,12 +85,10 @@ class Input{
                 tempRows.push_back(std::move(row));
             }
             
-            // Now transpose: convert rows to columns
             if (tempRows.empty()) return;
             
             size_t numCols = tempRows[0].size();
             
-            // Create columns from rows
             for (size_t col = 0; col < numCols; col++) {
                 std::vector<Token> column;
                 for (size_t row = 0; row < tempRows.size(); row++) {
@@ -119,3 +101,5 @@ class Input{
         }
 
 };
+
+#endif

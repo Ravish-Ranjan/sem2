@@ -1,6 +1,5 @@
 import sys
 import random
-from datetime import datetime
 import json
 
 
@@ -112,8 +111,7 @@ for t,unique in types:
             continue
 
 
-fileName+=f"-{size}-size-"
-fileName+=str(datetime.now().strftime("%d-%m-%Y-%H-%M-%S"))
+fileName+=f"-{size}-size"
 
 def writeRowsToFile(inputs: list, fileName: str) -> None:
     rows = zip(*inputs)    
