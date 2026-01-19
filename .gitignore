@@ -6,7 +6,7 @@ daa/input/*.txt
 **/images/**/*.jpg
 **/images/**/*.jpeg
 **/images/**/*.JPG
-**/imageS/**/*.PNG
+**/images/**/*.PNG
 **/images/**/*.JPEG
 daa/output/*.csv
 
