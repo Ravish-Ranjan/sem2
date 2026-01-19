@@ -1,7 +1,7 @@
 image*.png
 
 main
-daa/input/*.txt
+daa/input/*.json
 **/images/**/*.png
 **/images/**/*.jpg
 **/images/**/*.jpeg

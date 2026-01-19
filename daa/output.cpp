@@ -11,15 +11,26 @@ class Output{
         std::string outputGraphImageName = "";
     public:
         Output(std::string outGIN = "algo-analyze"):outputGraphImageName(outGIN){}
-        void genGraph(const std::vector<double>& y){
+        void genGraph(const std::vector<double>& comps,const std::vector<double>& assigns){
             std::string fileNameArgv = "filename:" + this->outputGraphImageName;
-            std::ostringstream yArgv;
-            yArgv << "y:";
-            for (int i = 0; i<y.size() ;++i){
-                if (i > 0) yArgv << ",";
-                yArgv << y[i];
+            std::string cmd = "python3 util/graphgen.py " + fileNameArgv + " ";
+
+            std::ostringstream yArgv1;
+            yArgv1 << "comparisions:";
+            for (int i = 0; i<comps.size() ;++i){
+                if (i > 0) yArgv1 << ",";
+                yArgv1 << comps[i];
             }
-            std::string cmd = "python3 util/graphgen.py " + fileNameArgv + " " + yArgv.str();
+            cmd = cmd + yArgv1.str() + " ";
+            
+            std::ostringstream yArgv2;
+            yArgv2 << "assignments:";
+            for (int i = 0; i<assigns.size() ;++i){
+                if (i > 0) yArgv2 << ",";
+                yArgv2 << assigns[i];
+            }
+            cmd += yArgv2.str();
+            
             runCommand(cmd);
         }
 };
