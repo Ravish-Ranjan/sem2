@@ -27,7 +27,7 @@ void insertionSort(std::vector<T>& arr){
 }
 
 int main(){
-    std::vector<double> res = analyzer<int>("int",insertionSort<int>,"InsertionSort");
+    std::vector<double> res = analyzer<std::string>("name",insertionSort<std::string>,"InsertionSort");
 
     std::cout << "Avg. Time (age1) : ";
     for(double time:res){

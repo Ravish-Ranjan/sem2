@@ -2,7 +2,9 @@ image*.png
 
 main
 daa/input/*.txt
-daa/images/*.png
+**/images/**/*.png
+**/images/**/*.jpg
+**/images/**/*.jpeg
 daa/output/*.csv
 
 # Prerequisites
