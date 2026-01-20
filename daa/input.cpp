@@ -1,31 +1,42 @@
 #ifndef INPUT_CPP
 #define INPUT_CPP
 
-#include "util/command.cpp"
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+#include "util/command.cpp"
 #include "util/json.hpp"
 using json = nlohmann::json;
 
+// class to give command and get input from python interface 
 class Input{
     private:
-        int inputSize = 10;
-        std::string inputFile = "";
-        std::string inputTypes = "int";
-        std::string inputNames = "int";
-        std::string inputFileName = "input-data";
+        int inputSize; // base input size
+        std::string inputFile = ""; // input file path got from python 
+        std::string inputTypes; // getting different type data from python 
+        std::string inputNames; // keys to save data from python into json with
+        std::string inputFileName = "algo-data"; // input filename to give in python to generate
 
+        // function to fetch json data from generated files
         void getInput() {
             if (this->inputFile == "")
                 throw std::runtime_error("Cannot open file");
             std::ifstream file(this->inputFile);
-            file >> this->input;
+
+            if (file.is_open()){
+                file >> this->input; // saving data into object
+                file.close(); // closing file
+            } else {
+                std::cout << "Error : error opening input from json file" << std::endl; // printing error
+            }
         }
 
     public:
         json input;
+
+        // class constructor to initialize data generation parameter
         Input(std::string inpTp,std::string inpNm,int inpSz = 10,std::string inpFN = "input-data"){
             this->inputSize = inpSz;
             this->inputTypes = inpTp;
@@ -33,15 +44,16 @@ class Input{
             this->inputFileName= inpFN;
         }
         
+        // function to run command to generate data from python interface
         void genInput(){
-            this->input.clear();
-            std::string sizeArgv = "size:" + std::to_string(this->inputSize);
-            std::string inputTypesArgv = "types:" + this->inputTypes;
-            std::string inputFileNameArgv = "filename:" + this->inputFileName;
-            std::string inputNamesArgv = "names:" + this->inputNames;
-            std::string cmd = "python3 util/gendataset.py " + sizeArgv + " " + inputTypesArgv + " " + inputNamesArgv + " " + inputFileNameArgv;
-            this->inputFile = runCommand(cmd);
-            this->getInput();
+            this->input.clear(); // clearing previous data;
+            std::string sizeArgv = "size:" + std::to_string(this->inputSize); // command line arguments for size
+            std::string inputTypesArgv = "types:" + this->inputTypes; // command line arguments for data types
+            std::string inputFileNameArgv = "filename:" + this->inputFileName; // command line arguments for filename
+            std::string inputNamesArgv = "names:" + this->inputNames; // command line arguments for json key names
+            std::string cmd = "python3 util/gendataset.py " + sizeArgv + " " + inputTypesArgv + " " + inputNamesArgv + " " + inputFileNameArgv; // command line arguments for full command
+            this->inputFile = runCommand(cmd); // running command 
+            this->getInput(); // fetching data function run
         }
 };
 

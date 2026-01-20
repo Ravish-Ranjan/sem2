@@ -69,7 +69,7 @@ def genInp(tp):
 
 def writeRowsToFile(inputs: list, fileName: str) -> None:   
     with open(fileName, 'w') as json_file:
-        json.dump(inputs, json_file)
+        json.dump(inputs, json_file,indent=4)
 
 for i in range(1,len(sys.argv)):
     label,value = sys.argv[i].split(":")
