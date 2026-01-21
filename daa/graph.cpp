@@ -35,7 +35,7 @@ class Graph{
         void genGraph(const std::vector<double>& comps,const std::vector<double>& assigns){
             std::string fileNameArgv = "filename:" + this->graphName; // command line argument for filename
             std::string graphTitleArgv = "title:" + this->graphName; // command line argument for graph title
-            std::string cmd = "python3 util/graphgen.py " + fileNameArgv + " " + graphTitleArgv + " "; // complete command prefix
+            std::string cmd = "python util/graphgen.py " + fileNameArgv + " " + graphTitleArgv + " "; // complete command prefix
 
             // command line argument for plotting comparisions on graph
             std::ostringstream yArgv1;

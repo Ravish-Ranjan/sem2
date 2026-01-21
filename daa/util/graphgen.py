@@ -1,5 +1,6 @@
 import sys
 from matplotlib import pyplot as plt
+from pathlib import Path
 
 if (len(sys.argv) < 2):
     raise RuntimeError("Insufficient input")
@@ -46,5 +47,5 @@ plt.xlabel(xLable)
 plt.ylabel(yLabel)
 plt.title(title)
 
-plt.savefig(f"/home/ravish/work/sem2/daa/images/{fileName}.png")
+plt.savefig(str(Path.cwd())+f"/images/{fileName}.png")
 print(f"./images/{fileName}.png")

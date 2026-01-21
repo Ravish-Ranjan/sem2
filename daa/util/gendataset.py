@@ -1,6 +1,7 @@
 import sys
 import random
 import json
+from pathlib import Path
 
 if (len(sys.argv) < 2):
     raise RuntimeError("Insufficient input")
@@ -20,7 +21,7 @@ LOWERCHARS = "abcdefghijklmnopqrstuvwxyz"
 UPPERCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
-namesFileName="/home/ravish/work/sem2/daa/util/names.json"
+namesFileName=str(Path.cwd()) + "/input/names.json"
 fileName = "input-data"
 size = 10 # 1..200
 times = 1
@@ -94,5 +95,5 @@ for i,(t,unique) in enumerate(types):
 
 fileName+=f"-{size}-size"
 
-writeRowsToFile(inputs,f"/home/ravish/work/sem2/daa/input/{fileName}.json")
+writeRowsToFile(inputs,str(Path.cwd())+f"/input/{fileName}.json")
 print(f"./input/{fileName}.json")

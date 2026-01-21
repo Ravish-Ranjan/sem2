@@ -51,7 +51,7 @@ class Input{
             std::string inputTypesArgv = "types:" + this->inputTypes; // command line arguments for data types
             std::string inputFileNameArgv = "filename:" + this->inputFileName; // command line arguments for filename
             std::string inputNamesArgv = "names:" + this->inputNames; // command line arguments for json key names
-            std::string cmd = "python3 util/gendataset.py " + sizeArgv + " " + inputTypesArgv + " " + inputNamesArgv + " " + inputFileNameArgv; // command line arguments for full command
+            std::string cmd = "python util/gendataset.py " + sizeArgv + " " + inputTypesArgv + " " + inputNamesArgv + " " + inputFileNameArgv; // command line arguments for full command
             this->inputFile = runCommand(cmd); // running command 
             this->getInput(); // fetching data function run
         }

@@ -36,15 +36,15 @@ int main(){
     InsertionSort is;
 
     // first question
-    Analyzer analyzer1("int,firstName","age,name",is,"InsertionSortOnAge");
+    Analyzer analyzer1("float,firstName","age,name",is,"InsertionSortOnAge");
     analyzer1.analyze("age"); // insertion sorting data on age 
     
     // second question
-    Analyzer analyzer2("int,firstName","age,name",is,"InsertionSortOnName");
+    Analyzer analyzer2("float,firstName","age,name",is,"InsertionSortOnName");
     analyzer2.analyze("name"); // insertion sorting data on name
     
     // third question (with persistent data)
-    Analyzer analyzer3("int,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
+    Analyzer analyzer3("float,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
     analyzer3.analyze("age"); // insertion sorting data first on age
     analyzer3.analyze("name"); // insertion sorting data then on name
 
