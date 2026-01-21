@@ -31,6 +31,8 @@ class InsertionSort : public Metric {
 };
 
 int main(){
+    std::cout << "Installing python dependencies" << std::endl;
+    runCommand("pip install -r requirements.txt");
     InsertionSort is;
 
     // first question

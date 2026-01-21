@@ -7,6 +7,20 @@
 
 #include "util/command.cpp"
 
+// function to open generates graphs
+void openImageInNativeViewer(const std::string& imagePath) {
+    #ifdef _WIN32
+        std::string cmd = "cmd /c start \"\" \"" + imagePath + "\"";
+    #elif __APPLE__
+        std::string cmd = "open \"" + imagePath + "\"";
+    #else
+        std::string cmd = "xdg-open \"" + imagePath + "\"";
+    #endif
+    
+    runCommand(cmd + " >/dev/null 2>&1 &");
+}
+
+
 // graph class for generating class
 class Graph{
     private:
@@ -43,6 +57,8 @@ class Graph{
             
             // running command 
             runCommand(cmd);
+            // openging image file
+            openImageInNativeViewer("./images/"+this->graphName+".png");
         }
 };
 

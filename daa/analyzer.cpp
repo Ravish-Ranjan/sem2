@@ -57,6 +57,7 @@ class Analyzer{
             Graph grf(this->algoName); // object of class graph to plot graph
             Output out(this->algoName); // object of class output to save output
 
+            std::cout << "Input file generated in input folder" << std::endl;
             // running algo for sifferent input size
             for (int size = 10; size <= 100; size+=10){
                 // object of class input to get input data from python interface

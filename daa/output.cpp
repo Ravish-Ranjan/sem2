@@ -36,6 +36,7 @@ class Output{
             if (outputFile.is_open()){
                 outputFile << outputs.dump(4); // saving json data
                 outputFile.close(); // closing file
+                std::cout << "Output file saved : " << ("./output/"+outputFileName+".json") << std::endl; // printing output file path
             } else {
                 std::cout << "Error : error opening output to json file" << std::endl; // printing error
             }
