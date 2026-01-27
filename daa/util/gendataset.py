@@ -61,7 +61,7 @@ def genInp(tp):
                 
                 return list(values)
             else :
-                return [round(random.random() * (high - low) + low,4)for _ in range(size)]
+                return [round(random.random() * (high - low) + low,2)for _ in range(size)]
 
         case "charLower":
             return random.choices(LOWERCHARS,k=size)
