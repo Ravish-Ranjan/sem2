@@ -17,6 +17,7 @@ class Sorting : public Metric {
                     this->comps++;
                     if (elem < data[key][j]){
                         assign(data,j,j+1);
+                        this->assigns++;
                         j--;
                     } else {
                         break;
@@ -30,10 +31,13 @@ class Sorting : public Metric {
 
 int main(){
     Sorting s;
+    std::cout << "Sorting(asc) cars based on thier horsepower" << std::endl;
+    std::cout << "Fetching dataset from ucimlrepo dataset-id = 9" << std::endl;
+    runCommand("python ./util/fetchcardata.py");
+    std::cout << "dataset fetched in data folder" << std::endl;
 
-    Analyzer analyzer("name,float","websiteName,responseTime",s,"WebsiteResponseTimeSorting");
-    analyzer.repetitions = 1;
-    analyzer.analyze("responseTime");
+    Analyzer analyzer("","carname,horsepower",s,"CarHorsePowerSorting");
+    analyzer.analyze("horsepower","util/getcardata.py");
 
     return 0;
 }

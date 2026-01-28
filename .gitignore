@@ -2,6 +2,7 @@ image*.png
 
 
 daa/*/*.json
+**/data/**/*.csv
 **/images/**/*.png
 **/images/**/*.jpg
 **/images/**/*.jpeg

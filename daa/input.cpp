@@ -18,7 +18,7 @@ class Input{
         std::string inputTypes; // getting different type data from python 
         std::string inputNames; // keys to save data from python into json with
         std::string inputFileName = "algo-data"; // input filename to give in python to generate
-
+        
         // function to fetch json data from generated files
         void getInput() {
             if (this->inputFile == "")
@@ -35,6 +35,7 @@ class Input{
 
     public:
         json input;
+        std::string generatorFile = "util/gendataset.py";
 
         // class constructor to initialize data generation parameter
         Input(std::string inpTp,std::string inpNm,int inpSz = 10,std::string inpFN = "input-data"){
@@ -51,7 +52,7 @@ class Input{
             std::string inputTypesArgv = "types:" + this->inputTypes; // command line arguments for data types
             std::string inputFileNameArgv = "filename:" + this->inputFileName; // command line arguments for filename
             std::string inputNamesArgv = "names:" + this->inputNames; // command line arguments for json key names
-            std::string cmd = "python util/gendataset.py " + sizeArgv + " " + inputTypesArgv + " " + inputNamesArgv + " " + inputFileNameArgv; // command line arguments for full command
+            std::string cmd = "python " + this->generatorFile + " " + sizeArgv + " " + inputTypesArgv + " " + inputNamesArgv + " " + inputFileNameArgv; // command line arguments for full command
             this->inputFile = runCommand(cmd); // running command 
             this->getInput(); // fetching data function run
         }
