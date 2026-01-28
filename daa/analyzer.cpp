@@ -6,32 +6,6 @@
 #include "output.cpp"
 #include "graph.cpp"
 
-// custom assign function to assign data from one index to other in data
-void assign(json& data,int from, int to){
-    for (auto& it:data.items()){
-        data[it.key()][to] = data[it.key()][from];
-    }
-}
-
-// custom assign function to assign data from given object to given data 
-void assign(json& data, int to, const json& saved_row) {
-    for (auto& it : data.items()) {
-        data[it.key()][to] = saved_row[it.key()];
-    }
-}
-
-// function to print json data
-void printJson(const json& data){
-     for (auto& it:data.items()){
-        std::cout << it.key() << " : ";
-        for (auto elem:data[it.key()]){
-            std::cout << elem << " ";
-        }
-        std::cout << std::endl;
-     }
-}
-
-
 // analyzer class for re-analyzing any algorithms
 class Analyzer{
     public:
@@ -41,6 +15,7 @@ class Analyzer{
         Metric& algoObj; // algo object for algorithm access
         bool preserveIntermediate; // flag to preserve data inbetween multiple analyzer runs
         json data; // cache intermedia te data
+        int repetitions = 10;
 
         // class constructor 
         Analyzer(std::string inpTp,std::string inpNm,Metric& algoObj,std::string algoNm = "algo",bool presIntr = false) : algoObj(algoObj){
@@ -69,7 +44,7 @@ class Analyzer{
         
                 std::string sizeStr = std::to_string(size);
 
-                for (int rep = 0; rep<10; rep++){
+                for (int rep = 0; rep<this->repetitions; rep++){
                     json copy;
 
                     if (

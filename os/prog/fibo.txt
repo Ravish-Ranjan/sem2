@@ -1,0 +1,44 @@
+
+[Process pid: 15472, ppid: 15471] Starting Fibonacci:
+pid 15472: 0
+
+[Process pid: 15473, ppid: 15471] Starting Fibonacci:
+pid 15473: 0
+pid 15472: 1
+pid 15473: 1
+pid 15472: 1
+pid 15473: 1
+pid 15472: 2
+pid 15473: 2
+pid 15472: 3
+pid 15473: 3
+pid 15472: 5
+pid 15473: 5
+pid 15472: 8
+pid 15473: 8
+pid 15472: 13
+pid 15473: 13
+pid 15472: 21
+pid 15473: 21
+pid 15472: 34
+pid 15473: 34
+pid 15472: 55
+pid 15473: 55
+pid 15472: 89
+pid 15473: 89
+pid 15472: 144
+pid 15473: 144
+pid 15472: 233
+pid 15473: 233
+pid 15472: 377
+pid 15473: 377
+pid 15472: 610
+pid 15473: 610
+pid 15472: 987
+pid 15473: 987
+pid 15472: 1597
+pid 15473: 1597
+pid 15472: 2584
+pid 15473: 2584
+pid 15472: 4181
+pid 15473: 4181

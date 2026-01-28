@@ -8,6 +8,31 @@
 #include "util/json.hpp"
 using json = nlohmann::json;
 
+// custom assign function to assign data from one index to other in data
+void assign(json& data,int from, int to){
+    for (auto& it:data.items()){
+        data[it.key()][to] = data[it.key()][from];
+    }
+}
+
+// custom assign function to assign data from given object to given data 
+void assign(json& data, int to, const json& saved_row) {
+    for (auto& it : data.items()) {
+        data[it.key()][to] = saved_row[it.key()];
+    }
+}
+
+// function to print json data
+void printJson(const json& data){
+     for (auto& it:data.items()){
+        std::cout << it.key() << " : ";
+        for (auto elem:data[it.key()]){
+            std::cout << elem << " ";
+        }
+        std::cout << std::endl;
+     }
+}
+
 // abstract class with algo function to override and implement own algorithm
 class Metric{
     public:
