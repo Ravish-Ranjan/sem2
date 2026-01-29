@@ -1,5 +1,6 @@
 image*.png
 
+**/*.zip
 
 daa/*/*.json
 **/data/**/*.csv

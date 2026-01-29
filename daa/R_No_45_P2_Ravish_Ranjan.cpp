@@ -31,6 +31,8 @@ class Sorting : public Metric {
 
 int main(){
     Sorting s;
+    std::cout << "Installing python dependencies (pip venv is required)" << std::endl;
+    runCommand("pip install -r requirements.txt");
     std::cout << "Sorting(asc) cars based on thier horsepower" << std::endl;
     std::cout << "Fetching dataset from ucimlrepo dataset-id = 9" << std::endl;
     runCommand("python ./util/fetchcardata.py");
