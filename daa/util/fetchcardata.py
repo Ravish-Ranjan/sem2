@@ -8,7 +8,7 @@ if (path.exists()):
 
 from ucimlrepo import fetch_ucirepo
 df_main = fetch_ucirepo(id=9)
-df = df_main.data.original[["car_name","horsepower"]]
+df = df_main.data.original[["car_name","horsepower","weight","cylinders","acceleration"]]
 df = df.dropna()
 print(df.columns)
 df.to_csv("data/cardata.csv",index=False,header=False)

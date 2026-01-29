@@ -21,14 +21,17 @@ allCarData = []
 with open("data/cardata.csv","r") as dataset:
     for carData in dataset:
         carData = carData.rstrip()
-        carName,horsePower = carData.rsplit(",",1)
-        allCarData.append((carName.replace('"',""),float(horsePower)))
+        carName,horsePower,weight,cylinders,accelaration = carData.rsplit(",",4)
+        allCarData.append((carName.replace('"',""),float(horsePower),float(weight),int(cylinders),float(accelaration)))
     
 selectedData = random.choices(allCarData,k=size)
-cars,hps = list(zip(*selectedData))
+cars,hps,weights,cylinderss,accelarations = list(zip(*selectedData))
 formattedData = {
     "carname":cars,
-    "horsepower":hps
+    "horsepower":hps,
+    "weight":weights,
+    "cylinders":cylinderss,
+    "accelaration":accelarations
 }
 
 fileName+=f"-{size}-size"

@@ -3,7 +3,7 @@
 
 class Sorting : public Metric {
     public:
-        void algo(json& data,std::string key) override{
+        void algo(json& data,const std::string& key) override{
             for (int i = 1; i< data[key].size(); i++){
                 json saved_row;
 

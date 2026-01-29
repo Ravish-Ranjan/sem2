@@ -38,7 +38,7 @@ class Metric{
     public:
         int comps = 0; // variable to store comparisions
         int assigns = 0; // variable to store assignments
-        virtual void algo(json& data,std::string key) = 0; // virtual function to be overriden in inheriting clas
+        virtual void algo(json& data,const std::string& key) = 0; // virtual function to be overriden in inheriting clas
         
         // function to reset metric variables 
         void reset() {
