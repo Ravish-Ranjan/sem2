@@ -38,7 +38,7 @@ int main(){
     runCommand("python ./util/fetchcardata.py");
     std::cout << "dataset fetched in data folder" << std::endl;
 
-    Analyzer analyzer("","carname,horsepower",s,"CarHorsePowerSorting");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting");
     analyzer.analyze("horsepower","util/getcardata.py");
 
     return 0;
