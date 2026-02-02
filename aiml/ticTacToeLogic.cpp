@@ -4,6 +4,8 @@
 
 enum Play {X,O,_};
 
+Play PlayerPlaysAs = Play::X;
+
 int value(const std::vector<Play>& state){
     if (
         (state[0] == Play::O && state[1] == Play::O && state[2] == Play::O) || 
@@ -86,7 +88,8 @@ int bestValue(std::vector<Play>& state,bool maxPlays){
 }
 
 int bestMove(std::vector<Play>& state,Play AiPlays){
-    int bestVal = -10000;
+    bool isMax = AiPlays == Play::O;
+    int bestVal = isMax?std::numeric_limits<int>::min():std::numeric_limits<int>::max();
     int bestMove = -1;
 
     for(int i=0; i<9; i++){
@@ -94,9 +97,16 @@ int bestMove(std::vector<Play>& state,Play AiPlays){
             state[i] = AiPlays;
             int moveVal = bestValue(state,AiPlays == Play::X);
             state[i] = Play::_;
-            if (moveVal > bestVal){
-                bestMove = i;
-                bestVal = moveVal;
+            if (isMax){
+                if (moveVal > bestVal){
+                    bestMove = i;
+                    bestVal = moveVal;
+                }
+            } else {
+                if (moveVal < bestVal){
+                    bestMove = i;
+                    bestVal = moveVal;
+                }
             }
         }
     }
@@ -107,34 +117,4 @@ bool gameOver(const std::vector<Play>& state){
     if (value(state) != 0) return true;
     if (isFull(state)) return true;
     return false;
-}
-
-int main(){
-    std::vector<Play> board(9,Play::_);
-    std::cout << "You play first (X)" << std::endl;
-    printState(board);
-    int place = 1;
-
-    do{
-        std::cout << "Enter playing position : ";
-        std::cin >> place;
-        if (board[place-1] != Play::_){
-            std::cout << "Can't play their, already filled" << std::endl;
-            continue; 
-        }
-        board[place-1] = Play::X;
-        printState(board);
-        int bestmov = bestMove(board,Play::O);
-        if (bestmov <0) break;
-        board[bestmov] = Play::O;
-        printState(board);
-    }while(!gameOver(board));
-
-    if (gameOver(board)) {
-        int winner = value(board);
-        if (winner == 0) std::cout << "Draw" << std::endl;
-        else std::cout << (winner == 1? "Ai wins":"You win") << std::endl;
-    }
-
-    return 0;
 }
