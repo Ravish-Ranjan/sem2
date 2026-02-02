@@ -1,10 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <limits>
-
-enum Play {X,O,_};
-
-Play PlayerPlaysAs = Play::X;
+#include "players.h"
 
 int value(const std::vector<Play>& state){
     if (
@@ -59,33 +56,7 @@ void printState(const std::vector<Play>& s){
     // std::cout << std::endl;
 }
 
-int bestValue(std::vector<Play>& state,bool maxPlays){
-    int score = value(state);
-    if (score != 0) return score;
-    if (isFull(state)) return 0;
-
-    if (maxPlays){
-        int maxVal = std::numeric_limits<int>::min();
-        for (int i=0; i<9; i++) {
-            if (state[i] == Play::_){
-                state[i] = Play::O;
-                maxVal = std::max(maxVal , bestValue(state,false));
-                state[i] = Play::_;
-            }
-        }
-        return maxVal;
-    } else {
-        int minVal = std::numeric_limits<int>::max();
-        for (int i=0; i<9; i++) {
-            if (state[i] == Play::_){
-                state[i] = Play::X;
-                minVal = std::min(minVal , bestValue(state,true));
-                state[i] = Play::_;
-            }
-        }
-        return minVal;
-    }
-}
+int bestValue(std::vector<Play>& state,bool maxPlays);
 
 int bestMove(std::vector<Play>& state,Play AiPlays){
     bool isMax = AiPlays == Play::O;
