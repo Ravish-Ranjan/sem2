@@ -55,17 +55,4 @@ class Metric{
         virtual ~Metric() {} // virtual destructor for inherited classs
 };
 
-// function to split string by separator and return in vector
-std::vector<std::string> split(std::string inp,char sep = ' '){   
-    std::stringstream ss(inp);
-    std::string segment;
-    std::vector<std::string> results;
-    
-    while (std::getline(ss, segment, sep)) {
-        results.push_back(segment);
-    }
-    return results;
-}
-    
-
 #endif

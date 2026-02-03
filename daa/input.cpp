@@ -14,11 +14,12 @@ using json = nlohmann::json;
 class Input{
     private:
         int inputSize; // base input size
-        std::string inputFile = ""; // input file path got from python 
         std::string inputTypes; // getting different type data from python 
         std::string inputNames; // keys to save data from python into json with
         std::string inputFileName = "algo-data"; // input filename to give in python to generate
         
+    public:
+        std::string inputFile = ""; // input file path got from python 
         // function to fetch json data from generated files
         void getInput() {
             if (this->inputFile == "")
@@ -33,9 +34,15 @@ class Input{
             }
         }
 
-    public:
         json input;
         std::string generatorFile = "util/gendataset.py";
+
+        Input(){
+            this->inputSize = 0;
+            this->inputTypes = "";
+            this->inputNames = "";
+            this->inputFileName = "";
+        }
 
         // class constructor to initialize data generation parameter
         Input(std::string inpTp,std::string inpNm,int inpSz = 10,std::string inpFN = "input-data"){

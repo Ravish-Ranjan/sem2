@@ -3,7 +3,6 @@ image*.png
 **/*.zip
 
 daa/*/*.json
-**/data/**/*.csv
 **/images/**/*.png
 **/images/**/*.jpg
 **/images/**/*.jpeg
