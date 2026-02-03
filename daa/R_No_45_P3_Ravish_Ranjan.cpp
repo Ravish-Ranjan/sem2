@@ -43,7 +43,7 @@ class MergeSort: public Metric{
                 } else{
                     json savedObj = {};
                     for (auto& it:data.items()){
-                        savedObj[it.key()] = R[it.key()][i];
+                        savedObj[it.key()] = R[it.key()][j];
                     }
                     assign(data,k,savedObj);
                     this->assigns++;
@@ -66,7 +66,7 @@ class MergeSort: public Metric{
             while (j<n2){
                 json savedObj = {};
                 for (auto& it:data.items()){
-                    savedObj[it.key()] = R[it.key()][i];
+                    savedObj[it.key()] = R[it.key()][j];
                 }
                 assign(data,k,savedObj);
                 this->assigns++;
@@ -77,7 +77,7 @@ class MergeSort: public Metric{
         }
         void mergeSort(json& data,int low,int high,const std::string& key){
             if (low < high){
-                int mid = (low+(high-low))/2;
+                int mid = low+((high-low)/2);
                 mergeSort(data,low,mid,key);
                 mergeSort(data,mid+1,high,key);
                 merge(data,low,mid,high,key);
