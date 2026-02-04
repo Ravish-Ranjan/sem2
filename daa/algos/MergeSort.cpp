@@ -5,7 +5,7 @@
 
 class MergeSort: public Metric{
     public:
-        void merge(json& data,int low,int mid,int high,const std::string& key){
+        void merge(json& data,int low,int mid,int high,int key){
             int n1 = mid-low+1, n2 = high-mid;
             json L,R;
             for (auto& it:data.items()){
@@ -78,7 +78,7 @@ class MergeSort: public Metric{
             }
 
         }
-        void mergeSort(json& data,int low,int high,const std::string& key){
+        void mergeSort(json& data,int low,int high,int key){
             if (low < high){
                 int mid = low+((high-low)/2);
                 mergeSort(data,low,mid,key);
@@ -86,7 +86,7 @@ class MergeSort: public Metric{
                 merge(data,low,mid,high,key);
             }
         }
-        void algo(json& data,const std::string& key) override{
+        void algo(json& data,int key) override{
             this->mergeSort(data,0,data.begin().value().size()-1,key);
         }
 };

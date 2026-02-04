@@ -26,7 +26,7 @@ class Analyzer{
         }
 
         // analyzer function to analyze any algorithm
-        json analyze(std::string key,std::string generatorFile = "util/gendataset.py"){
+        json analyze(int key,std::string generatorFile = "util/gendataset.py"){
             std::vector<double> comps,assigns; // vectors to store comparisions and assignments of the run
             
             Graph grf(this->algoName); // object of class graph to plot graph

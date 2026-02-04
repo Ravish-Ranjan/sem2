@@ -68,9 +68,10 @@ def genInp(tp):
         case "charUpper":
             return random.choices(UPPERCHARS,k=size)
 
-def writeRowsToFile(inputs: list, fileName: str) -> None:   
+def writeRowsToFile(inputs: list, fileName: str) -> None:  
+    toput = list(zip(*inputs.values())) 
     with open(fileName, 'w') as json_file:
-        json.dump(inputs, json_file,indent=4)
+        json.dump(toput, json_file,indent=4)
 
 for i in range(1,len(sys.argv)):
     label,value = sys.argv[i].split(":")

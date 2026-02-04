@@ -36,9 +36,10 @@ formattedData = {
 
 fileName+=f"-{size}-size"
 
-def writeRowsToFile(inputs: list, fileName: str) -> None:   
+def writeRowsToFile(inputs: list, fileName: str) -> None:  
+    toput = list(zip(*inputs)) 
     with open(fileName, 'w') as json_file:
-        json.dump(inputs, json_file,indent=4)
+        json.dump(toput, json_file,indent=4)
 
 writeRowsToFile(formattedData,str(Path.cwd())+f"/input/{fileName}.json")
 print(f"./input/{fileName}.json")

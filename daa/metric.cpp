@@ -10,16 +10,12 @@ using json = nlohmann::json;
 
 // custom assign function to assign data from one index to other in data
 void assign(json& data,int from, int to){
-    for (auto& it:data.items()){
-        data[it.key()][to] = data[it.key()][from];
-    }
+    data[to] = data[from];
 }
 
 // custom assign function to assign data from given object to given data 
 void assign(json& data, int to, const json& saved_row) {
-    for (auto& it : data.items()) {
-        data[it.key()][to] = saved_row[it.key()];
-    }
+    data[to] = saved_row;
 }
 
 // function to print json data
@@ -38,7 +34,7 @@ class Metric{
     public:
         int comps = 0; // variable to store comparisions
         int assigns = 0; // variable to store assignments
-        virtual void algo(json& data,const std::string& key) = 0; // virtual function to be overriden in inheriting clas
+        virtual void algo(json& data,int key) = 0; // virtual function to be overriden in inheriting clas
         
         // function to reset metric variables 
         void reset() {

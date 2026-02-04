@@ -17,8 +17,8 @@ int main(){
     Input inp;
     inp.inputFile = "./data/drybean.json";
     inp.getInput();
-
-    s.algo(inp.input,"Perimeter");
+    return 0;
+    s.algo(inp.input,2);
     std::cout << "Comparisions : " << s.comps << std::endl;
     std::cout << "Assignments : " << s.assigns << std::endl;
 
