@@ -13,7 +13,7 @@ int main(){
     std::cout << "dataset fetched in data folder" << std::endl;
 
     Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting");
-    analyzer.analyze("horsepower","util/getcardata.py");
+    analyzer.analyze(2,"util/getcardata.py");
 
     return 0;
 }

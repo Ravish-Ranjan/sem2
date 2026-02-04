@@ -10,6 +10,8 @@ filename = ""
 datasetId = None
 columnscount = 7
 saveFileType = "csv"
+refresh=False
+size = -1
 
 for i in range(1,len(sys.argv)):
     label,value = sys.argv[i].split(":")
@@ -21,6 +23,10 @@ for i in range(1,len(sys.argv)):
         saveFileType = value
     elif (label == "columnscount"):
         columnscount = int(value)
+    elif (label == "refresh"):
+        refresh == bool(value)
+    elif (label == "size"):
+        size = int(value)
 
 path = Path("data/"+filename+"."+saveFileType)
 
@@ -28,7 +34,7 @@ if(filename == ""):
     print("filename required")
     exit(1)
 
-if (path.exists()):
+if (not refresh and path.exists()):
     print("data already fetched")
     exit(0)
 
@@ -45,6 +51,5 @@ match(saveFileType):
     case "csv":
         df.to_csv("data/"+filename+".csv",index=False)
     case "json":
-        with open("data/"+filename+".json","w") as fob:
-            json.dump(df.to_dict("list"),fob,indent=4)
+        df.to_json("data/"+filename+".json",orient="values")
         

@@ -6,11 +6,9 @@
 // Inheriting Metric class and overriding algo method
 class InsertionSort : public Metric {
     public:
-        void algo(json& data,const std::string& key) override{
-            for (int i = 1; i< data[key].size(); i++){
-                json saved_row;
-
-                for (auto [k, v] : data.items()) saved_row[k] = v[i]; // getting key's indexed data for later  
+        void algo(json& data,int key) override{
+            for (int i = 1; i< data.size(); i++){
+                json saved_row = data[i];
 
                 auto elem = saved_row[key]; // picking field of saved rowto sort the data with 
                 int j = i-1;
@@ -18,7 +16,7 @@ class InsertionSort : public Metric {
 
                 while (j >= 0){
                     this->comps++;
-                    if (elem < data[key][j]){
+                    if (elem < data[j][key]){
                         assign(data,j,j+1); // custom assign function for json
                         this->assigns++;
                         j--;
