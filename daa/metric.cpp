@@ -18,15 +18,44 @@ void assign(json& data, int to, const json& saved_row) {
     data[to] = saved_row;
 }
 
+void swapJson(json& data,int first,int second){
+    json firstData = data[first];
+    data[first] = data[second];
+    data[second] = firstData;
+}
+
 // function to print json data
 void printJson(const json& data){
-     for (auto& it:data.items()){
-        std::cout << it.key() << " : ";
-        for (auto elem:data[it.key()]){
-            std::cout << elem << " ";
+    if (data.is_array()) {
+        // Handle array of arrays or array of objects
+        for(size_t i = 0; i < data.size(); i++){
+            const auto& elem = data[i];
+            
+            if (elem.is_array()) {
+                // Array of arrays
+                for(const auto& item : elem){
+                    std::cout << item << " ";
+                }
+            } else if (elem.is_object()) {
+                // Array of objects - print values
+                for(auto it = elem.begin(); it != elem.end(); ++it){
+                    std::cout << it.value() << " ";
+                }
+            } else {
+                // Array of primitives
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
-     }
+    } else if (data.is_object()) {
+        // Handle single object
+        for(auto it = data.begin(); it != data.end(); ++it){
+            std::cout << it.key() << ": " << it.value() << std::endl;
+        }
+    } else {
+        // Handle primitive
+        std::cout << data << std::endl;
+    }
 }
 
 // abstract class with algo function to override and implement own algorithm

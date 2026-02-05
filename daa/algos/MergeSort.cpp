@@ -8,26 +8,14 @@ class MergeSort: public Metric{
         void merge(json& data,int low,int mid,int high,int key){
             int n1 = mid-low+1, n2 = high-mid;
             json L,R;
-            for (auto& it:data.items()){
-                L[it.key()] = {};
-                R[it.key()] = {};
-            }
 
             for(int i = 0; i<n1; i++){
-                json savedObj = {};
-                for (auto& it:data.items()){
-                    savedObj[it.key()] = data[it.key()][low+i];
-                }
-                assign(L,i,savedObj);
+                assign(L,i,data[low+i]);
                 this->assigns++;
             }
             
             for(int i = 0; i<n2; i++){
-                json savedObj = {};
-                for (auto& it:data.items()){
-                    savedObj[it.key()] = data[it.key()][mid+1+i];
-                }
-                assign(R,i,savedObj);
+                assign(R,i,data[mid+1+i]);
                 this->assigns++;
             }
 
@@ -35,20 +23,12 @@ class MergeSort: public Metric{
 
             while (i<n1 && j<n2){
                 this->comps++;
-                if (L[key][i] < R[key][j]){
-                    json savedObj = {};
-                    for (auto& it:data.items()){
-                        savedObj[it.key()] = L[it.key()][i];
-                    }
-                    assign(data,k,savedObj);
+                if (L[i][key] < R[j][key]){
+                    assign(data,k,L[i]);
                     this->assigns++;
                     i++;
                 } else{
-                    json savedObj = {};
-                    for (auto& it:data.items()){
-                        savedObj[it.key()] = R[it.key()][j];
-                    }
-                    assign(data,k,savedObj);
+                    assign(data,k,R[j]);
                     this->assigns++;
                     j++;
                 }
@@ -56,22 +36,14 @@ class MergeSort: public Metric{
             }
 
             while (i<n1){
-                json savedObj = {};
-                for (auto& it:data.items()){
-                    savedObj[it.key()] = L[it.key()][i];
-                }
-                assign(data,k,savedObj);
+                assign(data,k,L[i]);
                 this->assigns++;
                 i++;
                 k++;
             }
 
             while (j<n2){
-                json savedObj = {};
-                for (auto& it:data.items()){
-                    savedObj[it.key()] = R[it.key()][j];
-                }
-                assign(data,k,savedObj);
+                assign(data,k,R[j]);
                 this->assigns++;
                 j++;
                 k++;
@@ -87,7 +59,7 @@ class MergeSort: public Metric{
             }
         }
         void algo(json& data,int key) override{
-            this->mergeSort(data,0,data.begin().value().size()-1,key);
+            this->mergeSort(data,0,data.size()-1,key);
         }
 };
 

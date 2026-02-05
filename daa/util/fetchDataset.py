@@ -8,7 +8,7 @@ if (len(sys.argv) < 2):
 
 filename = ""
 datasetId = None
-columnscount = 7
+columnscount = None
 saveFileType = "csv"
 refresh=False
 size = -1
@@ -44,7 +44,10 @@ if (datasetId == None):
 
 from ucimlrepo import fetch_ucirepo
 df_main:pd.DataFrame = fetch_ucirepo(id=datasetId)
-df:pd.DataFrame = df_main.data.original.iloc[:,:columnscount]
+if (columnscount != None):
+    df:pd.DataFrame = df_main.data.original.iloc[:,:columnscount]
+else:
+    df:pd.DataFrame = df_main.data.original
 df = df.dropna()
 
 match(saveFileType):
