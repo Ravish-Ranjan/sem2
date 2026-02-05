@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 #include "analyzer.cpp"
 #include "algos/InsertionSort.cpp"
 
@@ -9,16 +10,24 @@ int main(){
 
     std::cout << "Sorting(asc) dry bean data based on thier perimeter" << std::endl;
     std::cout << "Fetching dataset from ucimlrepo dataset-id = 602" << std::endl;
-    runCommand("python ./util/fetchDataset.py id:602 filename:drybean columnscount:5 savefiletype:json");
+    runCommand("python ./util/fetchDataset.py id:602 filename:drybean savefiletype:json");
     
+    std::unordered_map<std::string,int> columnMap;
+    columnMap["Area"] = 0;
+    columnMap["Perimeter"] = 1;
+    columnMap["MajorAxisLength"] = 2;
+    columnMap["MinorAxisLength"] = 3;
+    columnMap["AspectRatio"] = 4;
+
+
     std::cout << "dataset fetched in data folder" << std::endl;
-    std::cout << "estimated time of completion is around 7 mins" << std::endl;
+    std::cout << "estimated time of completion is around 3.5 mins" << std::endl;
 
     Input inp;
     inp.inputFile = "./data/drybean.json";
     inp.getInput();
-    return 0;
-    s.algo(inp.input,2);
+
+    s.algo(inp.input,columnMap["Perimeter"]);
     std::cout << "Comparisions : " << s.comps << std::endl;
     std::cout << "Assignments : " << s.assigns << std::endl;
 
