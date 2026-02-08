@@ -1,12 +1,14 @@
 #include "analyzer.cpp"
 #include "algos/MergeSort.cpp"
 #include "algos/InsertionSort.cpp"
+#include "algos/QuickSort.cpp"
 
 int main(){
     std::cout << "Installing python dependencies" << std::endl;
     runCommand("pip install -r requirements.txt");
     MergeSort ms;
-    InsertionSort is;
+    // InsertionSort is;
+    QuickSort qs;
 
     // first question
     Analyzer analyzer1("float,firstName","age,name",ms,"MergeSortOnAge");
@@ -21,18 +23,31 @@ int main(){
     analyzer3.analyze(0); // Merge sorting data first on age
     analyzer3.analyze(1); // Merge sorting data then on name
 
+    // // first question
+    // Analyzer analyzer4("float,firstName","age,name",is,"InsertionSortOnAge");
+    // analyzer4.analyze(0); // Insertion sorting data on age 
+    
+    // // second question
+    // Analyzer analyzer5("float,firstName","age,name",is,"InsertionSortOnName");
+    // analyzer5.analyze(1); // Insertion sorting data on name
+    
+    // // third question (with persmstent data)
+    // Analyzer analyzer6("float,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
+    // analyzer6.analyze(0); // Insertion sorting data first on age
+    // analyzer6.analyze(1); // Insertion sorting data then on name
+
     // first question
-    Analyzer analyzer4("float,firstName","age,name",is,"InsertionSortOnAge");
-    analyzer4.analyze(0); // Insertion sorting data on age 
+    Analyzer analyzer7("float,firstName","age,name",qs,"QuickSortOnAge");
+    analyzer7.analyze(0); // Quick sorting data on age 
     
     // second question
-    Analyzer analyzer5("float,firstName","age,name",is,"InsertionSortOnName");
-    analyzer5.analyze(1); // Insertion sorting data on name
+    Analyzer analyzer8("float,firstName","age,name",qs,"QuickSortOnName");
+    analyzer8.analyze(1); // Quick sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer6("float,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
-    analyzer6.analyze(0); // Insertion sorting data first on age
-    analyzer6.analyze(1); // Insertion sorting data then on name
+    Analyzer analyzer9("float,firstName","age,name",qs,"QuickSortOnAgeThenName",true);
+    analyzer9.analyze(0); // Quick sorting data first on age
+    analyzer9.analyze(1); // Quick sorting data then on name
 
     // // given example
     json data = json::array({
@@ -47,15 +62,27 @@ int main(){
     std::cout << std::endl;
     printJson(data);
 
+    // data = json::array({
+    //     json::array({"Reeta",18.5}),
+    //     json::array({"Geeta",17.8}),
+    //     json::array({"Reeta",18.3})
+    // });
+    // std::cout << "Original Data (Insertion Sort)" << std::endl;
+    // printJson(data);
+    // is.algo(data,0);
+    // is.algo(data,1);
+    // std::cout << std::endl;
+    // printJson(data);
+
     data = json::array({
         json::array({"Reeta",18.5}),
         json::array({"Geeta",17.8}),
         json::array({"Reeta",18.3})
     });
-    std::cout << "Original Data (Insertion Sort)" << std::endl;
+    std::cout << "Original Data (Quick Sort)" << std::endl;
     printJson(data);
-    is.algo(data,0);
-    is.algo(data,1);
+    qs.algo(data,0);
+    qs.algo(data,1);
     std::cout << std::endl;
     printJson(data);
 
@@ -80,11 +107,15 @@ int main(){
 
     ms.algo(inp.input,columnMap["Perimeter"]);
     inp.getInput();
-    is.algo(inp.input,columnMap["Perimeter"]);
+    qs.algo(inp.input,columnMap["Perimeter"]);
+    // inp.getInput();
+    // is.algo(inp.input,columnMap["Perimeter"]);
     std::cout << "Comparisions (Merge Sort): " << ms.comps << std::endl;
     std::cout << "Assignments (Merge Sort): " << ms.assigns << std::endl;
-    std::cout << "\nComparisions (Insertion Sort): " << is.comps << std::endl;
-    std::cout << "Assignments (Insertion Sort): " << is.assigns << std::endl;
+    // std::cout << "\nComparisions (Insertion Sort): " << is.comps << std::endl;
+    // std::cout << "Assignments (Insertion Sort): " << is.assigns << std::endl;
+    std::cout << "\nComparisions (Quick Sort): " << qs.comps << std::endl;
+    std::cout << "Assignments (Quick Sort): " << qs.assigns << std::endl;
 
     Output out("DryBeanData");
     out.outputs = inp.input;
