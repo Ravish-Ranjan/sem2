@@ -17,16 +17,9 @@ class Output{
         // constructor to initialize filename and different size keys in outputs variable
         Output(std::string outFN){
             this->outputFileName = outFN;
-            outputs["10"] = {};
-            outputs["20"] = {};
-            outputs["30"] = {};
-            outputs["40"] = {};
-            outputs["50"] = {};
-            outputs["60"] = {};
-            outputs["70"] = {};
-            outputs["80"] = {};
-            outputs["90"] = {};
-            outputs["100"] = {};
+            outputs["data"] = {};
+            outputs["comps"] = {};
+            outputs["assigns"] = {};
         }
 
         // function to save output in json file
@@ -40,6 +33,20 @@ class Output{
             } else {
                 std::cout << "Error : error opening output to json file" << std::endl; // printing error
             }
+        }
+        json getSavedOutput(const std::string& readFrom) const {
+            std::ifstream inputFile("./output/"+readFrom+".json"); // opening file
+
+            json allData;
+
+            if (inputFile.is_open()){
+                inputFile >> allData; // reading json data
+                inputFile.close(); // closing file
+                std::cout << "Output file loaded : " << ("./output/"+readFrom+".json") << std::endl; // printing output file path
+            } else {
+                std::cout << "Error : error opening output from json file" << std::endl; // printing error
+            }
+            return allData;
         }
 };
 

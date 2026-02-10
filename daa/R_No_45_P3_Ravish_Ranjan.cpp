@@ -20,21 +20,19 @@ int main(){
     Analyzer analyzer3("float,firstName","age,name",ms,"MergeSortOnAgeThenName",true);
     analyzer3.analyze(0); // Merge sorting data first on age
     analyzer3.analyze(1); // Merge sorting data then on name
-
-    // first question
-    Analyzer analyzer4("float,firstName","age,name",is,"InsertionSortOnAge");
-    analyzer4.analyze(0); // Insertion sorting data on age 
     
-    // second question
-    Analyzer analyzer5("float,firstName","age,name",is,"InsertionSortOnName");
-    analyzer5.analyze(1); // Insertion sorting data on name
-    
-    // third question (with persmstent data)
-    Analyzer analyzer6("float,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
-    analyzer6.analyze(0); // Insertion sorting data first on age
-    analyzer6.analyze(1); // Insertion sorting data then on name
+    // reading old insertion sort run data
+    Output read("");
+    json r1 = read.getSavedOutput("InsertionSortOnAge");
+    json r2 = read.getSavedOutput("InsertionSortOnName");
+    json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
+    Graph g1("InsertionSortOnAge");
+    Graph g2("InsertionSortOnName");
+    Graph g3("InsertionSortOnAgeThenName");
+    g1.genGraph(r1["comps"],r1["assigns"]);
+    g2.genGraph(r2["comps"],r2["assigns"]);
+    g3.genGraph(r3["comps"],r3["assigns"]);
 
-    // // given example
     json data = json::array({
         json::array({"Reeta",18.5}),
         json::array({"Geeta",17.8}),
@@ -44,18 +42,6 @@ int main(){
     printJson(data);
     ms.algo(data,0);
     ms.algo(data,1);
-    std::cout << std::endl;
-    printJson(data);
-
-    data = json::array({
-        json::array({"Reeta",18.5}),
-        json::array({"Geeta",17.8}),
-        json::array({"Reeta",18.3})
-    });
-    std::cout << "Original Data (Insertion Sort)" << std::endl;
-    printJson(data);
-    is.algo(data,0);
-    is.algo(data,1);
     std::cout << std::endl;
     printJson(data);
 
@@ -79,15 +65,18 @@ int main(){
     inp.getInput();
 
     ms.algo(inp.input,columnMap["Perimeter"]);
-    inp.getInput();
-    is.algo(inp.input,columnMap["Perimeter"]);
     std::cout << "Comparisions (Merge Sort): " << ms.comps << std::endl;
     std::cout << "Assignments (Merge Sort): " << ms.assigns << std::endl;
-    std::cout << "\nComparisions (Insertion Sort): " << is.comps << std::endl;
-    std::cout << "Assignments (Insertion Sort): " << is.assigns << std::endl;
+    
+    Output readOld("");
+    json isData = readOld.getSavedOutput("DryBeanDataInsertionSort");
+    std::cout << "Comparisions (Insertion Sort): " << isData["comps"][0] << std::endl;
+    std::cout << "Assignments (Insertion Sort): " << isData["assigns"][0] << std::endl;
 
-    Output out("DryBeanData");
-    out.outputs = inp.input;
+    Output out("DryBeanDataMergeSort");
+    out.outputs["data"] = inp.input;
+    out.outputs["comps"] = {ms.comps};
+    out.outputs["assigns"] = {ms.assigns};
     out.saveOutput();
     return 0;
 }

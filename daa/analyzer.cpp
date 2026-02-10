@@ -75,7 +75,7 @@ class Analyzer{
                 comps.push_back(totalComps/(double)10.0); // saving avg comparisions for graph 
                 assigns.push_back(totalAssigns/(double)10.0); // saving avg assignments for graph
                 
-                out.outputs[sizeStr] = saveData; // saving data to output object
+                out.outputs["data"][sizeStr] = saveData; // saving data to output object
 
                 if (this->preserveIntermediate && this->data.contains(sizeStr)){ // saving new data back in cache
                     for(auto& dataset:this->data[sizeStr]){
@@ -83,6 +83,8 @@ class Analyzer{
                     }
                 }
             }
+            out.outputs["comps"] = comps;
+            out.outputs["assigns"] = assigns;
             grf.genGraph(comps,assigns); // generating graph
             out.saveOutput(); // saving output
 

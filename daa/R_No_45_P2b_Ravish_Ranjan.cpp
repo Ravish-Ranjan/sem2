@@ -31,8 +31,10 @@ int main(){
     std::cout << "Comparisions : " << s.comps << std::endl;
     std::cout << "Assignments : " << s.assigns << std::endl;
 
-    Output out("DryBeanData");
-    out.outputs = inp.input;
+    Output out("DryBeanDataInsertionSort");
+    out.outputs["data"] = inp.input;
+    out.outputs["comps"] = {s.comps};
+    out.outputs["assigns"] = {s.assigns};
     out.saveOutput();
     
     return 0;

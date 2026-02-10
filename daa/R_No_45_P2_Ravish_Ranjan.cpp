@@ -9,7 +9,7 @@ int main(){
     runCommand("pip install -r requirements.txt");
     std::cout << "Sorting(asc) cars based on thier horsepower" << std::endl;
     std::cout << "Fetching dataset from ucimlrepo dataset-id = 9" << std::endl;
-    runCommand("python ./util/fetchDataset.py id:9 filename:cardata");
+    runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
 
     Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting");
