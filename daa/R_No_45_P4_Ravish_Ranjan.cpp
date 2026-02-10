@@ -11,32 +11,6 @@ int main(){
     QuickSort qs;
 
     // first question
-    Analyzer analyzer1("float,firstName","age,name",ms,"MergeSortOnAge");
-    analyzer1.analyze(0); // Merge sorting data on age 
-    
-    // second question
-    Analyzer analyzer2("float,firstName","age,name",ms,"MergeSortOnName");
-    analyzer2.analyze(1); // Merge sorting data on name
-    
-    // third question (with persmstent data)
-    Analyzer analyzer3("float,firstName","age,name",ms,"MergeSortOnAgeThenName",true);
-    analyzer3.analyze(0); // Merge sorting data first on age
-    analyzer3.analyze(1); // Merge sorting data then on name
-
-    // // first question
-    // Analyzer analyzer4("float,firstName","age,name",is,"InsertionSortOnAge");
-    // analyzer4.analyze(0); // Insertion sorting data on age 
-    
-    // // second question
-    // Analyzer analyzer5("float,firstName","age,name",is,"InsertionSortOnName");
-    // analyzer5.analyze(1); // Insertion sorting data on name
-    
-    // // third question (with persmstent data)
-    // Analyzer analyzer6("float,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
-    // analyzer6.analyze(0); // Insertion sorting data first on age
-    // analyzer6.analyze(1); // Insertion sorting data then on name
-
-    // first question
     Analyzer analyzer7("float,firstName","age,name",qs,"QuickSortOnAge");
     analyzer7.analyze(0); // Quick sorting data on age 
     
@@ -49,32 +23,28 @@ int main(){
     analyzer9.analyze(0); // Quick sorting data first on age
     analyzer9.analyze(1); // Quick sorting data then on name
 
-    // // given example
+    Output read("");
+    json r1 = read.getSavedOutput("InsertionSortOnAge");
+    json r2 = read.getSavedOutput("InsertionSortOnName");
+    json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
+    Graph g1("InsertionSortOnAge");
+    Graph g2("InsertionSortOnName");
+    Graph g3("InsertionSortOnAgeThenName");
+    g1.genGraph(r1["comps"],r1["assigns"]);
+    g2.genGraph(r2["comps"],r2["assigns"]);
+    g3.genGraph(r3["comps"],r3["assigns"]);
+
+    r1 = read.getSavedOutput("MergeSortOnAge");
+    r2 = read.getSavedOutput("MergeSortOnName");
+    r3 = read.getSavedOutput("MergeSortOnAgeThenName");
+    Graph g4("MergeSortOnAge");
+    Graph g5("MergeSortOnName");
+    Graph g6("MergeSortOnAgeThenName");
+    g4.genGraph(r1["comps"],r1["assigns"]);
+    g5.genGraph(r2["comps"],r2["assigns"]);
+    g6.genGraph(r3["comps"],r3["assigns"]);
+
     json data = json::array({
-        json::array({"Reeta",18.5}),
-        json::array({"Geeta",17.8}),
-        json::array({"Reeta",18.3})
-    });
-    std::cout << "Original Data (Merge Sort)" << std::endl;
-    printJson(data);
-    ms.algo(data,0);
-    ms.algo(data,1);
-    std::cout << std::endl;
-    printJson(data);
-
-    // data = json::array({
-    //     json::array({"Reeta",18.5}),
-    //     json::array({"Geeta",17.8}),
-    //     json::array({"Reeta",18.3})
-    // });
-    // std::cout << "Original Data (Insertion Sort)" << std::endl;
-    // printJson(data);
-    // is.algo(data,0);
-    // is.algo(data,1);
-    // std::cout << std::endl;
-    // printJson(data);
-
-    data = json::array({
         json::array({"Reeta",18.5}),
         json::array({"Geeta",17.8}),
         json::array({"Reeta",18.3})
@@ -105,20 +75,23 @@ int main(){
     inp.inputFile = "./data/drybean.json";
     inp.getInput();
 
-    ms.algo(inp.input,columnMap["Perimeter"]);
-    inp.getInput();
     qs.algo(inp.input,columnMap["Perimeter"]);
-    // inp.getInput();
-    // is.algo(inp.input,columnMap["Perimeter"]);
-    std::cout << "Comparisions (Merge Sort): " << ms.comps << std::endl;
-    std::cout << "Assignments (Merge Sort): " << ms.assigns << std::endl;
-    // std::cout << "\nComparisions (Insertion Sort): " << is.comps << std::endl;
-    // std::cout << "Assignments (Insertion Sort): " << is.assigns << std::endl;
     std::cout << "\nComparisions (Quick Sort): " << qs.comps << std::endl;
     std::cout << "Assignments (Quick Sort): " << qs.assigns << std::endl;
 
-    Output out("DryBeanData");
-    out.outputs = inp.input;
+    Output readOld("");
+    json isData = readOld.getSavedOutput("DryBeanDataInsertionSort");
+    std::cout << "Comparisions (Insertion Sort): " << isData["comps"][0] << std::endl;
+    std::cout << "Assignments (Insertion Sort): " << isData["assigns"][0] << std::endl;
+
+    isData = readOld.getSavedOutput("DryBeanDataMergeSort");
+    std::cout << "Comparisions (Merge Sort): " << isData["comps"][0] << std::endl;
+    std::cout << "Assignments (Merge Sort): " << isData["assigns"][0] << std::endl;
+
+    Output out("DryBeanDataQuickSort");
+    out.outputs["data"] = inp.input;
+    out.outputs["comps"] = {qs.comps};
+    out.outputs["assigns"] = {qs.assigns};
     out.saveOutput();
     return 0;
 }

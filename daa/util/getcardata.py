@@ -18,28 +18,17 @@ for i in range(1,len(sys.argv)):
 
 allCarData = []
 
-with open("data/cardata.csv","r") as dataset:
-    for carData in dataset:
-        carData = carData.rstrip()
-        carName,horsePower,weight,cylinders,accelaration = carData.rsplit(",",4)
-        allCarData.append((carName.replace('"',""),float(horsePower),float(weight),int(cylinders),float(accelaration)))
+with open("data/cardata.json","r") as dataset:
+    allCarData = json.load(dataset)
+    
     
 selectedData = random.choices(allCarData,k=size)
-cars,hps,weights,cylinderss,accelarations = list(zip(*selectedData))
-formattedData = {
-    "carname":cars,
-    "horsepower":hps,
-    "weight":weights,
-    "cylinders":cylinderss,
-    "accelaration":accelarations
-}
 
 fileName+=f"-{size}-size"
 
 def writeRowsToFile(inputs: list, fileName: str) -> None:  
-    toput = list(zip(*inputs)) 
     with open(fileName, 'w') as json_file:
-        json.dump(toput, json_file,indent=4)
+        json.dump(inputs, json_file,indent=4)
 
-writeRowsToFile(formattedData,str(Path.cwd())+f"/input/{fileName}.json")
+writeRowsToFile(selectedData,str(Path.cwd())+f"/input/{fileName}.json")
 print(f"./input/{fileName}.json")
