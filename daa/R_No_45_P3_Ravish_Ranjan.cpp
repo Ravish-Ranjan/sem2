@@ -1,12 +1,10 @@
 #include "analyzer.cpp"
 #include "algos/MergeSort.cpp"
-#include "algos/InsertionSort.cpp"
 
 int main(){
     std::cout << "Installing python dependencies" << std::endl;
     runCommand("pip install -r requirements.txt");
     MergeSort ms;
-    InsertionSort is;
 
     // first question
     Analyzer analyzer1("float,firstName","age,name",ms,"MergeSortOnAge");
