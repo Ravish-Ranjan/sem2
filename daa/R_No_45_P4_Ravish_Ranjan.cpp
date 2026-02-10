@@ -1,13 +1,9 @@
 #include "analyzer.cpp"
-#include "algos/MergeSort.cpp"
-#include "algos/InsertionSort.cpp"
 #include "algos/QuickSort.cpp"
 
 int main(){
     std::cout << "Installing python dependencies" << std::endl;
     runCommand("pip install -r requirements.txt");
-    MergeSort ms;
-    // InsertionSort is;
     QuickSort qs;
 
     // first question
