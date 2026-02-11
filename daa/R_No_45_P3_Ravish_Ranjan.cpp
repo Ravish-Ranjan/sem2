@@ -6,6 +6,7 @@ int main(){
     runCommand("pip install -r requirements.txt");
     MergeSort ms;
 
+    std::cout << "\n\nFirst Questions with Merge Sort" << std::endl;
     // first question
     Analyzer analyzer1("float,firstName","age,name",ms,"MergeSortOnAge");
     analyzer1.analyze(0); // Merge sorting data on age 
@@ -19,18 +20,6 @@ int main(){
     analyzer3.analyze(0); // Merge sorting data first on age
     analyzer3.analyze(1); // Merge sorting data then on name
     
-    // reading old insertion sort run data
-    Output read("");
-    json r1 = read.getSavedOutput("InsertionSortOnAge");
-    json r2 = read.getSavedOutput("InsertionSortOnName");
-    json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
-    Graph g1("InsertionSortOnAge");
-    Graph g2("InsertionSortOnName");
-    Graph g3("InsertionSortOnAgeThenName");
-    g1.genGraph(r1["comps"],r1["assigns"]);
-    g2.genGraph(r2["comps"],r2["assigns"]);
-    g3.genGraph(r3["comps"],r3["assigns"]);
-
     json data = json::array({
         json::array({"Reeta",18.5}),
         json::array({"Geeta",17.8}),
@@ -43,6 +32,33 @@ int main(){
     std::cout << std::endl;
     printJson(data);
 
+    std::cout << "\n\nSecond a Questions with Merge Sort" << std::endl;
+    std::cout << "Sorting(asc) cars based on thier horsepower" << std::endl;
+    std::cout << "Fetching dataset from ucimlrepo dataset-id = 9" << std::endl;
+    runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
+    std::cout << "dataset fetched in data folder" << std::endl;
+    
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerSorting");
+    analyzer.analyze(2,"util/getcardata.py");
+    
+    std::cout << "\n\nResult of First and Second (a) Questions with Insertion Sort" << std::endl;
+    // reading old insertion sort run data
+    Output read("");
+    json r1 = read.getSavedOutput("InsertionSortOnAge");
+    json r2 = read.getSavedOutput("InsertionSortOnName");
+    json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
+    json r4 = read.getSavedOutput("CarHorsePowerSorting");
+    Graph g1("InsertionSortOnAge");
+    Graph g2("InsertionSortOnName");
+    Graph g3("InsertionSortOnAgeThenName");
+    Graph g4("CarHorsePowerSorting");
+    g1.genGraph(r1["comps"],r1["assigns"]);
+    g2.genGraph(r2["comps"],r2["assigns"]);
+    g3.genGraph(r3["comps"],r3["assigns"]);
+    g4.genGraph(r4["comps"],r4["assigns"]);
+    
+    std::cout << "\n\nSecond (b) Questions with Merge Sort" << std::endl;
+    
     std::cout << "Sorting(asc) dry bean data based on thier perimeter" << std::endl;
     std::cout << "Fetching dataset from ucimlrepo dataset-id = 602" << std::endl;
     runCommand("python ./util/fetchDataset.py id:602 filename:drybean savefiletype:json");
@@ -66,6 +82,7 @@ int main(){
     std::cout << "Comparisions (Merge Sort): " << ms.comps << std::endl;
     std::cout << "Assignments (Merge Sort): " << ms.assigns << std::endl;
     
+    std::cout << "\n\nResult of Second (b) Questions with Insertion Sort" << std::endl;
     Output readOld("");
     json isData = readOld.getSavedOutput("DryBeanDataInsertionSort");
     std::cout << "Comparisions (Insertion Sort): " << isData["comps"][0] << std::endl;
