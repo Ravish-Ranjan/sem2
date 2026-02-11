@@ -32,7 +32,7 @@ int main(){
     std::cout << std::endl;
     printJson(data);
 
-    std::cout << "\n\nSecond a Questions with Merge Sort" << std::endl;
+    std::cout << "\n\nSecond (a) Questions with Merge Sort" << std::endl;
     std::cout << "Sorting(asc) cars based on thier horsepower" << std::endl;
     std::cout << "Fetching dataset from ucimlrepo dataset-id = 9" << std::endl;
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
