@@ -6,6 +6,7 @@ int main(){
     runCommand("pip install -r requirements.txt");
     QuickSort qs;
 
+    std::cout << "\n\nFirst Questions with Quick Sort" << std::endl;
     // first question
     Analyzer analyzer7("float,firstName","age,name",qs,"QuickSortOnAge");
     analyzer7.analyze(0); // Quick sorting data on age 
@@ -19,27 +20,6 @@ int main(){
     analyzer9.analyze(0); // Quick sorting data first on age
     analyzer9.analyze(1); // Quick sorting data then on name
 
-    Output read("");
-    json r1 = read.getSavedOutput("InsertionSortOnAge");
-    json r2 = read.getSavedOutput("InsertionSortOnName");
-    json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
-    Graph g1("InsertionSortOnAge");
-    Graph g2("InsertionSortOnName");
-    Graph g3("InsertionSortOnAgeThenName");
-    g1.genGraph(r1["comps"],r1["assigns"]);
-    g2.genGraph(r2["comps"],r2["assigns"]);
-    g3.genGraph(r3["comps"],r3["assigns"]);
-
-    r1 = read.getSavedOutput("MergeSortOnAge");
-    r2 = read.getSavedOutput("MergeSortOnName");
-    r3 = read.getSavedOutput("MergeSortOnAgeThenName");
-    Graph g4("MergeSortOnAge");
-    Graph g5("MergeSortOnName");
-    Graph g6("MergeSortOnAgeThenName");
-    g4.genGraph(r1["comps"],r1["assigns"]);
-    g5.genGraph(r2["comps"],r2["assigns"]);
-    g6.genGraph(r3["comps"],r3["assigns"]);
-
     json data = json::array({
         json::array({"Reeta",18.5}),
         json::array({"Geeta",17.8}),
@@ -52,6 +32,44 @@ int main(){
     std::cout << std::endl;
     printJson(data);
 
+    std::cout << "\n\nSecond (a) Questions with Quick Sort" << std::endl;
+    std::cout << "Sorting(asc) cars based on thier horsepower" << std::endl;
+    std::cout << "Fetching dataset from ucimlrepo dataset-id = 9" << std::endl;
+    runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
+    std::cout << "dataset fetched in data folder" << std::endl;
+    
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",qs,"CarHorsePowerQuickSorting");
+    analyzer.analyze(2,"util/getcardata.py");
+
+    std::cout << "\n\nResult of First and Second (a) Questions with Insertion Sort & Merge Sort" << std::endl;
+    Output read("");
+    json r1 = read.getSavedOutput("InsertionSortOnAge");
+    json r2 = read.getSavedOutput("InsertionSortOnName");
+    json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
+    json r4 = read.getSavedOutput("CarHorsePowerSorting");
+    Graph g1("InsertionSortOnAge");
+    Graph g2("InsertionSortOnName");
+    Graph g3("InsertionSortOnAgeThenName");
+    Graph g4("CarHorsePowerSorting");
+    g1.genGraph(r1["comps"],r1["assigns"]);
+    g2.genGraph(r2["comps"],r2["assigns"]);
+    g3.genGraph(r3["comps"],r3["assigns"]);
+    g4.genGraph(r4["comps"],r4["assigns"]);
+
+    r1 = read.getSavedOutput("MergeSortOnAge");
+    r2 = read.getSavedOutput("MergeSortOnName");
+    r3 = read.getSavedOutput("MergeSortOnAgeThenName");
+    r4 = read.getSavedOutput("CarHorsePowerMergeSorting");
+    Graph g5("MergeSortOnAge");
+    Graph g6("MergeSortOnName");
+    Graph g7("MergeSortOnAgeThenName");
+    Graph g8("CarHorsePowerMergeSorting");
+    g5.genGraph(r1["comps"],r1["assigns"]);
+    g6.genGraph(r2["comps"],r2["assigns"]);
+    g7.genGraph(r3["comps"],r3["assigns"]);
+    g8.genGraph(r4["comps"],r4["assigns"]);
+
+    std::cout << "\n\nSecond (b) Questions with Quick Sort" << std::endl;
     std::cout << "Sorting(asc) dry bean data based on thier perimeter" << std::endl;
     std::cout << "Fetching dataset from ucimlrepo dataset-id = 602" << std::endl;
     runCommand("python ./util/fetchDataset.py id:602 filename:drybean savefiletype:json");
