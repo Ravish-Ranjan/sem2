@@ -38,7 +38,7 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
     
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerSorting");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerMergeSorting");
     analyzer.analyze(2,"util/getcardata.py");
     
     std::cout << "\n\nResult of First and Second (a) Questions with Insertion Sort" << std::endl;
