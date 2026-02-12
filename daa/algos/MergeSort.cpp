@@ -23,7 +23,7 @@ class MergeSort: public Metric{
 
             while (i<n1 && j<n2){
                 this->comps++;
-                if (L[i][key] < R[j][key]){
+                if (L[i][key] <= R[j][key]){
                     assign(data,k,L[i]);
                     this->assigns++;
                     i++;
