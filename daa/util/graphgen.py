@@ -46,6 +46,7 @@ axis.legend()
 plt.xlabel(xLable)
 plt.ylabel(yLabel)
 plt.title(title)
+plt.grid(True)
 
 plt.savefig(str(Path.cwd())+f"/images/{fileName}.png")
 print(f"./images/{fileName}.png")
