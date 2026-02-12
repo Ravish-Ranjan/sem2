@@ -36,7 +36,9 @@ for i in data:
 
 x = data["x"][:maxlen]
 
+plt.style.use("dark_background")
 figure,axis = plt.subplots()
+plt.grid(True)
 
 for i in data:
     if (i != "x"):
@@ -46,7 +48,6 @@ axis.legend()
 plt.xlabel(xLable)
 plt.ylabel(yLabel)
 plt.title(title)
-plt.grid(True)
 
 plt.savefig(str(Path.cwd())+f"/images/{fileName}.png")
 print(f"./images/{fileName}.png")
