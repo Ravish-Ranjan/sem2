@@ -24,6 +24,7 @@
 |Practical 3|[Decision Tree Classifier](./dm/pract3.ipynb)|[pract3.pdf](./dm/pract3.pdf)|
 |Practical 4|[Naive Bayes Classifier](./dm/pract4.ipynb)|[pract4.pdf](./dm/pract4.pdf)|
 |Practical 5|[SVM Classifier](./dm/pract5.ipynb)|[pract5.pdf](./dm/pract5.pdf)|
+|Practical 6|[Rule Based Classifier](./dm/pract6.ipynb)|[pract6.pdf](./dm/pract6.pdf)|
 
 ## Operating Systems
 |Practical|Codefile|pdf|
@@ -32,3 +33,4 @@
 |Practical 2|[Fork and Sync](./os/a2.md)|[a2.pdf](./os/a2.pdf)|
 |Practical 3|[Child Process File Writing](./os/a3.md)|[a3.pdf](./os/a3.pdf)|
 |Practical 4|[SRJF and Round Robin](./os/a4.md)|[a4.pdf](./os/a4.pdf)|
+|Practical 5|[Premptive Priority](./os/a5.md)|[a5.pdf](./os/a5.pdf)|
