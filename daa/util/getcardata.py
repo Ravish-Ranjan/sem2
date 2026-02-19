@@ -8,6 +8,7 @@ if (len(sys.argv) < 2):
 
 size = 10
 fileName = "input-data"
+refresh = False
 
 for i in range(1,len(sys.argv)):
     label,value = sys.argv[i].split(":")
@@ -15,8 +16,14 @@ for i in range(1,len(sys.argv)):
         size = int(value)
     elif (label == "filename"):
         fileName = value
+    elif (label == "refresh"):
+        refresh = True
 
 allCarData = []
+
+if (not refresh and Path(f"input/{fileName}-{size}-size.json").exists()):
+    print(f"./input/{fileName}-{size}-size.json")
+    exit(0)
 
 with open("data/cardata.json","r") as dataset:
     allCarData = json.load(dataset)
