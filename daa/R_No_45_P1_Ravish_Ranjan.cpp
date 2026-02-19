@@ -9,16 +9,16 @@ int main(){
 
     // first question
     Analyzer analyzer1("float,firstName","age,name",is,"InsertionSortOnAge");
-    analyzer1.analyze(0); // insertion sorting data on age 
+    analyzer1.analyze(0,"InsertionSortOnAge"); // insertion sorting data on age 
     
     // second question
     Analyzer analyzer2("float,firstName","age,name",is,"InsertionSortOnName");
-    analyzer2.analyze(1); // insertion sorting data on name
+    analyzer2.analyze(1,"InsertionSortOnName"); // insertion sorting data on name
     
     // third question (with persistent data)
     Analyzer analyzer3("float,firstName","age,name",is,"InsertionSortOnAgeThenName",true);
-    analyzer3.analyze(0); // insertion sorting data first on age
-    analyzer3.analyze(1); // insertion sorting data then on name
+    analyzer3.analyze(0,"InsertionSortOnAgeThenName"); // insertion sorting data first on age
+    analyzer3.analyze(1,"InsertionSortOnAgeThenName"); // insertion sorting data then on name
 
     return 0;
     // // given example

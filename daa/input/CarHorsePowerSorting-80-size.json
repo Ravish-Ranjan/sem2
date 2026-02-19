@@ -1,562 +1,82 @@
 [
-    [
-        "buick,century,luxus,(sw)",
-        8,
-        350.0,
-        150.0,
-        4699
-    ],
-    [
-        "buick,regal,sport,coupe,(turbo)",
-        6,
-        231.0,
-        165.0,
-        3445
-    ],
-    [
-        "audi,100,ls",
-        4,
-        107.0,
-        90.0,
-        2430
-    ],
-    [
-        "datsun,510,hatchback",
-        4,
-        119.0,
-        92.0,
-        2434
-    ],
-    [
-        "chrysler,lebaron,salon",
-        6,
-        225.0,
-        85.0,
-        3465
-    ],
-    [
-        "amc,gremlin",
-        6,
-        232.0,
-        100.0,
-        2789
-    ],
-    [
-        "amc,ambassador,dpl",
-        8,
-        390.0,
-        190.0,
-        3850
-    ],
-    [
-        "dodge,omni",
-        4,
-        105.0,
-        75.0,
-        2230
-    ],
-    [
-        "subaru",
-        4,
-        108.0,
-        93.0,
-        2391
-    ],
-    [
-        "dodge,omni",
-        4,
-        105.0,
-        75.0,
-        2230
-    ],
-    [
-        "chrysler,newport,royal",
-        8,
-        400.0,
-        190.0,
-        4422
-    ],
-    [
-        "toyota,corolla,1200",
-        4,
-        71.0,
-        65.0,
-        1773
-    ],
-    [
-        "toyota,mark,ii",
-        6,
-        156.0,
-        108.0,
-        2930
-    ],
-    [
-        "chevrolet,cavalier,2-door",
-        4,
-        112.0,
-        88.0,
-        2395
-    ],
-    [
-        "honda,prelude",
-        4,
-        107.0,
-        75.0,
-        2210
-    ],
-    [
-        "honda,civic,cvcc",
-        4,
-        91.0,
-        60.0,
-        1800
-    ],
-    [
-        "dodge,aries,se",
-        4,
-        135.0,
-        84.0,
-        2525
-    ],
-    [
-        "toyota,starlet",
-        4,
-        79.0,
-        58.0,
-        1755
-    ],
-    [
-        "chevrolet,monte,carlo,s",
-        8,
-        350.0,
-        145.0,
-        4082
-    ],
-    [
-        "chevrolet,impala",
-        8,
-        350.0,
-        165.0,
-        4209
-    ],
-    [
-        "ford,galaxie,500",
-        8,
-        351.0,
-        153.0,
-        4129
-    ],
-    [
-        "oldsmobile,delta,88,royale",
-        8,
-        350.0,
-        160.0,
-        4456
-    ],
-    [
-        "ford,country,squire,(sw)",
-        8,
-        400.0,
-        170.0,
-        4746
-    ],
-    [
-        "bmw,2002",
-        4,
-        121.0,
-        113.0,
-        2234
-    ],
-    [
-        "volkswagen,rabbit,l",
-        4,
-        105.0,
-        74.0,
-        1980
-    ],
-    [
-        "fiat,124,sport,coupe",
-        4,
-        98.0,
-        90.0,
-        2265
-    ],
-    [
-        "pontiac,phoenix,lj",
-        6,
-        231.0,
-        105.0,
-        3535
-    ],
-    [
-        "honda,civic,1500,gl",
-        4,
-        91.0,
-        67.0,
-        1850
-    ],
-    [
-        "amc,concord",
-        4,
-        151.0,
-        90.0,
-        3003
-    ],
-    [
-        "fiat,x1.9",
-        4,
-        79.0,
-        67.0,
-        2000
-    ],
-    [
-        "volkswagen,411,(sw)",
-        4,
-        121.0,
-        76.0,
-        2511
-    ],
-    [
-        "toyota,celica,gt,liftback",
-        4,
-        134.0,
-        95.0,
-        2515
-    ],
-    [
-        "dodge,colt",
-        4,
-        90.0,
-        75.0,
-        2125
-    ],
-    [
-        "renault,5,gtl",
-        4,
-        79.0,
-        58.0,
-        1825
-    ],
-    [
-        "buick,skylark,320",
-        8,
-        350.0,
-        165.0,
-        3693
-    ],
-    [
-        "chevrolet,nova,custom",
-        6,
-        250.0,
-        100.0,
-        3278
-    ],
-    [
-        "chrysler,cordoba",
-        8,
-        400.0,
-        190.0,
-        4325
-    ],
-    [
-        "plymouth,valiant,custom",
-        6,
-        225.0,
-        95.0,
-        3264
-    ],
-    [
-        "ford,pinto,runabout",
-        4,
-        122.0,
-        86.0,
-        2226
-    ],
-    [
-        "plymouth,satellite,custom,(sw)",
-        8,
-        318.0,
-        150.0,
-        4077
-    ],
-    [
-        "datsun,810",
-        6,
-        146.0,
-        97.0,
-        2815
-    ],
-    [
-        "hi,1200d",
-        8,
-        304.0,
-        193.0,
-        4732
-    ],
-    [
-        "amc,pacer",
-        6,
-        232.0,
-        90.0,
-        3211
-    ],
-    [
-        "toyota,corolla,tercel",
-        4,
-        89.0,
-        60.0,
-        1968
-    ],
-    [
-        "volvo,diesel",
-        6,
-        145.0,
-        76.0,
-        3160
-    ],
-    [
-        "honda,prelude",
-        4,
-        107.0,
-        75.0,
-        2210
-    ],
-    [
-        "dodge,charger,2.2",
-        4,
-        135.0,
-        84.0,
-        2370
-    ],
-    [
-        "chevrolet,citation",
-        6,
-        173.0,
-        115.0,
-        2595
-    ],
-    [
-        "ford,gran,torino,(sw)",
-        8,
-        302.0,
-        140.0,
-        4638
-    ],
-    [
-        "subaru",
-        4,
-        97.0,
-        67.0,
-        2065
-    ],
-    [
-        "dodge,magnum,xe",
-        8,
-        318.0,
-        140.0,
-        4080
-    ],
-    [
-        "buick,estate,wagon,(sw)",
-        8,
-        350.0,
-        155.0,
-        4360
-    ],
-    [
-        "volvo,144ea",
-        4,
-        121.0,
-        112.0,
-        2868
-    ],
-    [
-        "plymouth,custom,suburb",
-        8,
-        360.0,
-        170.0,
-        4654
-    ],
-    [
-        "pontiac,catalina",
-        8,
-        400.0,
-        175.0,
-        4385
-    ],
-    [
-        "plymouth,horizon,tc3",
-        4,
-        105.0,
-        70.0,
-        2150
-    ],
-    [
-        "dodge,magnum,xe",
-        8,
-        318.0,
-        140.0,
-        4080
-    ],
-    [
-        "toyota,corolla",
-        4,
-        97.0,
-        75.0,
-        2155
-    ],
-    [
-        "ford,fiesta",
-        4,
-        98.0,
-        66.0,
-        1800
-    ],
-    [
-        "amc,rebel,sst",
-        8,
-        304.0,
-        150.0,
-        3433
-    ],
-    [
-        "buick,century,limited",
-        6,
-        181.0,
-        110.0,
-        2945
-    ],
-    [
-        "amc,matador",
-        6,
-        258.0,
-        110.0,
-        3632
-    ],
-    [
-        "dodge,charger,2.2",
-        4,
-        135.0,
-        84.0,
-        2370
-    ],
-    [
-        "capri,ii",
-        4,
-        140.0,
-        92.0,
-        2572
-    ],
-    [
-        "fiat,128",
-        4,
-        68.0,
-        49.0,
-        1867
-    ],
-    [
-        "mercedes,benz,300d",
-        5,
-        183.0,
-        77.0,
-        3530
-    ],
-    [
-        "plymouth,volare,premier,v8",
-        8,
-        318.0,
-        150.0,
-        3940
-    ],
-    [
-        "chevrolet,camaro",
-        4,
-        151.0,
-        90.0,
-        2950
-    ],
-    [
-        "pontiac,grand,prix,lj",
-        8,
-        400.0,
-        180.0,
-        4220
-    ],
-    [
-        "ford,fairmont,(auto)",
-        6,
-        200.0,
-        85.0,
-        2965
-    ],
-    [
-        "plymouth,duster",
-        6,
-        198.0,
-        95.0,
-        3102
-    ],
-    [
-        "vw,rabbit,custom",
-        4,
-        89.0,
-        71.0,
-        1925
-    ],
-    [
-        "dodge,coronet,custom",
-        8,
-        318.0,
-        150.0,
-        3777
-    ],
-    [
-        "volkswagen,dasher",
-        4,
-        97.0,
-        78.0,
-        2190
-    ],
-    [
-        "subaru,dl",
-        4,
-        97.0,
-        67.0,
-        1985
-    ],
-    [
-        "datsun,810,maxima",
-        6,
-        146.0,
-        120.0,
-        2930
-    ],
-    [
-        "plymouth,champ",
-        4,
-        86.0,
-        64.0,
-        1875
-    ],
-    [
-        "toyota,celica,gt",
-        4,
-        144.0,
-        96.0,
-        2665
-    ],
-    [
-        "plymouth,satellite",
-        8,
-        318.0,
-        150.0,
-        3436
-    ],
-    [
-        "saab,99le",
-        4,
-        121.0,
-        110.0,
-        2660
-    ]
+	["amc,concord", 4, 151.0, 90.0, 3003],
+	["plymouth,champ", 4, 86.0, 64.0, 1875],
+	["mercury,capri,v6", 6, 155.0, 107.0, 2472],
+	["plymouth,fury,iii", 8, 318.0, 150.0, 4096],
+	["ford,fairmont,futura", 4, 140.0, 92.0, 2865],
+	["pontiac,catalina,brougham", 8, 400.0, 175.0, 4464],
+	["amc,matador", 8, 304.0, 120.0, 3962],
+	["ford,fairmont,(auto)", 6, 200.0, 85.0, 2965],
+	["datsun,b210,gx", 4, 85.0, 70.0, 2070],
+	["amc,matador", 6, 232.0, 100.0, 3288],
+	["ford,pinto", 4, 122.0, 80.0, 2451],
+	["ford,gran,torino", 8, 302.0, 137.0, 4042],
+	["ford,granada,l", 6, 232.0, 112.0, 2835],
+	["chrysler,lebaron,salon", 6, 225.0, 85.0, 3465],
+	["ford,country,squire,(sw)", 8, 351.0, 142.0, 4054],
+	["chevrolet,woody", 4, 98.0, 60.0, 2164],
+	["peugeot,504", 4, 120.0, 88.0, 2957],
+	["plymouth,satellite,custom,(sw)", 8, 318.0, 150.0, 4077],
+	["datsun,b210,gx", 4, 85.0, 70.0, 2070],
+	["triumph,tr7,coupe", 4, 122.0, 88.0, 2500],
+	["ford,pinto", 4, 122.0, 85.0, 2310],
+	["chrysler,lebaron,salon", 6, 225.0, 85.0, 3465],
+	["ford,galaxie,500", 8, 351.0, 153.0, 4154],
+	["oldsmobile,omega", 8, 350.0, 180.0, 3664],
+	["amc,matador", 6, 232.0, 100.0, 3288],
+	["amc,pacer", 6, 232.0, 90.0, 3211],
+	["saab,99gle", 4, 121.0, 115.0, 2795],
+	["fiat,128", 4, 68.0, 49.0, 1867],
+	["toyota,corona", 4, 134.0, 95.0, 2560],
+	["volvo,144ea", 4, 121.0, 112.0, 2868],
+	["ford,maverick", 6, 200.0, 85.0, 2587],
+	["toyota,corona", 4, 113.0, 95.0, 2228],
+	["amc,gremlin", 6, 199.0, 90.0, 2648],
+	["chevrolet,malibu,classic,(sw)", 8, 267.0, 125.0, 3605],
+	["toyota,corolla", 4, 97.0, 75.0, 2155],
+	["dodge,omni", 4, 105.0, 75.0, 2230],
+	["audi,fox", 4, 98.0, 83.0, 2219],
+	["buick,skylark", 4, 151.0, 84.0, 2635],
+	["ford,mustang,ii,2+2", 4, 140.0, 89.0, 2755],
+	["datsun,1200", 4, 72.0, 69.0, 1613],
+	["bmw,320i", 4, 121.0, 110.0, 2600],
+	["peugeot,304", 4, 79.0, 70.0, 2074],
+	["ford,mustang", 6, 250.0, 88.0, 3139],
+	["plymouth,fury,iii", 8, 318.0, 150.0, 4096],
+	["datsun,280-zx", 6, 168.0, 132.0, 2910],
+	["volvo,244dl", 4, 121.0, 98.0, 2945],
+	["chevroelt,chevelle,malibu", 6, 250.0, 105.0, 3897],
+	["honda,accord,lx", 4, 98.0, 68.0, 2135],
+	["pontiac,ventura,sj", 6, 250.0, 110.0, 3645],
+	["toyota,corolla,1600,(sw)", 4, 97.0, 88.0, 2100],
+	["vw,rabbit", 4, 98.0, 76.0, 2144],
+	["maxda,glc,deluxe", 4, 86.0, 65.0, 1975],
+	["toyota,corolla,1200", 4, 71.0, 65.0, 1836],
+	["maxda,rx3", 3, 70.0, 90.0, 2124],
+	["maxda,rx3", 3, 70.0, 90.0, 2124],
+	["ford,torino", 8, 302.0, 140.0, 3449],
+	["ford,maverick", 6, 250.0, 72.0, 3158],
+	["chrysler,newport,royal", 8, 400.0, 190.0, 4422],
+	["volkswagen,dasher", 4, 97.0, 78.0, 2190],
+	["chrysler,newport,royal", 8, 400.0, 190.0, 4422],
+	["ford,pinto", 6, 171.0, 97.0, 2984],
+	["chevrolet,monza,2+2", 8, 262.0, 110.0, 3221],
+	["mazda,626", 4, 120.0, 75.0, 2542],
+	["ford,torino,500", 6, 250.0, 88.0, 3302],
+	["amc,gremlin", 6, 232.0, 100.0, 2789],
+	["chevrolet,chevelle,malibu", 6, 250.0, 100.0, 3329],
+	["nissan,stanza,xe", 4, 120.0, 88.0, 2160],
+	["chevrolet,nova", 6, 250.0, 105.0, 3459],
+	["plymouth,satellite,custom,(sw)", 8, 318.0, 150.0, 4077],
+	["chevrolet,bel,air", 8, 350.0, 145.0, 4440],
+	["dodge,d100", 8, 318.0, 150.0, 3755],
+	["plymouth,volare", 6, 225.0, 100.0, 3430],
+	["plymouth,grand,fury", 8, 318.0, 150.0, 4498],
+	["buick,skylark,320", 8, 350.0, 165.0, 3693],
+	["toyota,carina", 4, 97.0, 88.0, 2279],
+	["amc,ambassador,sst", 8, 304.0, 150.0, 3672],
+	["chevy,c20", 8, 307.0, 200.0, 4376],
+	["buick,century,special", 6, 231.0, 105.0, 3380],
+	["honda,civic", 4, 91.0, 53.0, 1795],
+	["ford,ltd", 8, 351.0, 148.0, 4657]
 ]

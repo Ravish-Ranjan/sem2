@@ -8,17 +8,17 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Random Quick Sort" << std::endl;
     // first question
-    Analyzer analyzer7("float,firstName","age,name",rqs,"RandomQuickSortOnAge");
-    analyzer7.analyze(0); // RandomQuick sorting data on age 
+    Analyzer analyzer7("float,firstName","age,name",rqs,"InsertionSortOnAge");
+    analyzer7.analyze(0,"RandomQuickSortOnAge"); // RandomQuick sorting data on age 
     
     // second question
-    Analyzer analyzer8("float,firstName","age,name",rqs,"RandomQuickSortOnName");
-    analyzer8.analyze(1); // RandomQuick sorting data on name
+    Analyzer analyzer8("float,firstName","age,name",rqs,"InsertionSortOnName");
+    analyzer8.analyze(1,"RandomQuickSortOnName"); // RandomQuick sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer9("float,firstName","age,name",rqs,"RandomQuickSortOnAgeThenName",true);
-    analyzer9.analyze(0); // RandomQuick sorting data first on age
-    analyzer9.analyze(1); // RandomQuick sorting data then on name
+    Analyzer analyzer9("float,firstName","age,name",rqs,"InsertionSortOnAgeThenName",true);
+    analyzer9.analyze(0,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data first on age
+    analyzer9.analyze(1,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data then on name
 
     json data = json::array({
         json::array({"Reeta",18.5}),
@@ -38,8 +38,8 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
     
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",rqs,"CarHorsePowerRandomQuickSorting");
-    analyzer.analyze(2,"util/getcardata.py");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",rqs,"CarHorsePowerSorting");
+    analyzer.analyze(2,"CarHorsePowerRandomQuickSorting","util/getcardata.py");
 
     std::cout << "\n\nResult of First and Second (a) Questions with Quick Sort" << std::endl;
     Output read("");
