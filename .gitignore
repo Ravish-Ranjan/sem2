@@ -3,6 +3,7 @@ image*.png
 **/*.zip
 
 # daa/input/*.json
+.hidden
 **/images/**/*.png
 **/images/**/*.jpg
 **/images/**/*.jpeg

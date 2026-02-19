@@ -30,7 +30,7 @@ class Analyzer{
         json analyze(int key,std::string outNm = "output",std::string generatorFile = "util/gendataset.py"){
             std::vector<double> comps,assigns; // vectors to store comparisions and assignments of the run
             
-            Graph grf(this->algoName); // object of class graph to plot graph
+            Graph grf(outNm); // object of class graph to plot graph
             Output out(outNm); // object of class output to save output
 
             std::cout << "Input file generated in input folder" << std::endl;
