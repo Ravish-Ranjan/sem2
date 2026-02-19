@@ -2,7 +2,7 @@ image*.png
 
 **/*.zip
 
-daa/input/*.json
+# daa/input/*.json
 **/images/**/*.png
 **/images/**/*.jpg
 **/images/**/*.jpeg

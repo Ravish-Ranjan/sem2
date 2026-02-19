@@ -12,6 +12,7 @@ class Analyzer{
         std::string inputTypes; // input type (name,int,float,charLower,charUpper,firstName,lastName)
         std::string inputNames; // json keys to put the data into
         std::string algoName; // algoName to be used for filenames
+        std::string outputName = "output"; // output name to be used for filenames
         Metric& algoObj; // algo object for algorithm access
         bool preserveIntermediate; // flag to preserve data inbetween multiple analyzer runs
         json data; // cache intermedia te data
@@ -26,11 +27,11 @@ class Analyzer{
         }
 
         // analyzer function to analyze any algorithm
-        json analyze(int key,std::string generatorFile = "util/gendataset.py"){
+        json analyze(int key,std::string outNm = "output",std::string generatorFile = "util/gendataset.py"){
             std::vector<double> comps,assigns; // vectors to store comparisions and assignments of the run
             
             Graph grf(this->algoName); // object of class graph to plot graph
-            Output out(this->algoName); // object of class output to save output
+            Output out(outNm); // object of class output to save output
 
             std::cout << "Input file generated in input folder" << std::endl;
             // running algo for sifferent input size

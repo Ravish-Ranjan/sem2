@@ -27,6 +27,7 @@ size = 10 # 1..200
 times = 1
 types = [("int",False)] # name,int,float,charLower,charUpper,firstName,lastName
 names = ["int"]
+refresh = False
 
 def doesWantUnique(t:str)->bool:
     if (len(t.split("-")) < 2):
@@ -88,7 +89,13 @@ for i in range(1,len(sys.argv)):
             continue
         case "names":
             names = value.split(",")
+        case "refresh":
+            refresh = True
 inputs = {}
+
+if (not refresh and Path(f"input/{fileName}-{size}-size.json").exists()):
+    print(f"./input/{fileName}-{size}-size.json")
+    exit(0)
 
 for i,(t,unique) in enumerate(types):
     tempInputs = genInp(t)

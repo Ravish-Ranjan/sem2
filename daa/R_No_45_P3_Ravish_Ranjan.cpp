@@ -8,17 +8,17 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Merge Sort" << std::endl;
     // first question
-    Analyzer analyzer1("float,firstName","age,name",ms,"MergeSortOnAge");
-    analyzer1.analyze(0); // Merge sorting data on age 
+    Analyzer analyzer1("float,firstName","age,name",ms,"InsertionSortOnAge");
+    analyzer1.analyze(0,"MergeSortOnAge"); // Merge sorting data on age 
     
     // second question
-    Analyzer analyzer2("float,firstName","age,name",ms,"MergeSortOnName");
-    analyzer2.analyze(1); // Merge sorting data on name
+    Analyzer analyzer2("float,firstName","age,name",ms,"InsertionSortOnName");
+    analyzer2.analyze(1,"MergeSortOnName"); // Merge sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer3("float,firstName","age,name",ms,"MergeSortOnAgeThenName",true);
-    analyzer3.analyze(0); // Merge sorting data first on age
-    analyzer3.analyze(1); // Merge sorting data then on name
+    Analyzer analyzer3("float,firstName","age,name",ms,"InsertionSortOnAgeThenName",true);
+    analyzer3.analyze(0,"MergeSortOnAgeThenName"); // Merge sorting data first on age
+    analyzer3.analyze(1,"MergeSortOnAgeThenName"); // Merge sorting data then on name
     
     json data = json::array({
         json::array({"Reeta",18.5}),
@@ -38,8 +38,8 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
     
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerMergeSorting");
-    analyzer.analyze(2,"util/getcardata.py");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerSorting");
+    analyzer.analyze(2,"CarHorsePowerMergeSorting","util/getcardata.py");
     
     std::cout << "\n\nResult of First and Second (a) Questions with Insertion Sort" << std::endl;
     // reading old insertion sort run data

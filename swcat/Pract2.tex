@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{enumitem}   % For customizing lists
+\usepackage{multicol}   % For multi-column layouts
+\usepackage{multirow}   % For merging rows
+\usepackage{colortbl}   % For coloring table rows/cells
+\usepackage{xcolor}     % For defining colors
+\usepackage[margin=1in]{geometry} % Better margins
+
+\title{\LaTeX Formatting Assignment 2}
+\author{Ravish Ranjan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% ----------------------------------------------
+% SECTION 1: LISTS
+% ----------------------------------------------
+\section*{1. Lists Demonstration}
+
+\subsection*{Shopping List (Bulleted)}
+% A bulleted list with at least 5 items
+\begin{itemize}
+    \item Dairy: Milk, Cheddar Cheese, Yogurt
+    \item Produce: Apples, Bananas, Spinach
+    \item Bakery: Whole Wheat Bread, Bagels
+    \item Pantry: Jasmine Rice, Pasta, Olive Oil
+    \item Beverages: Orange Juice, Green Tea
+\end{itemize}
+
+\subsection*{Software Installation Process (Numbered)}
+% A numbered list with at least 5 items
+\begin{enumerate}
+    \item \textbf{Download:} Visit the official website and download the installer file.
+    \item \textbf{Run Installer:} Locate the downloaded \texttt{.exe} file and double-click to run it.
+    \item \textbf{License Agreement:} Read the terms and conditions and click "I Agree".
+    \item \textbf{Select Path:} Choose the destination folder for the installation.
+    \item \textbf{Finish:} Wait for the progress bar to complete and click "Finish" to launch the program.
+\end{enumerate}
+
+\vspace{1cm} % Add some vertical space
+
+% ----------------------------------------------
+% SECTION 2: TABLES
+% ----------------------------------------------
+\section*{2. Student Grades Table}
+
+% Table specifications:
+% - Student grades
+% - Merged cells (\multicolumn and \multirow)
+% - Clearly defined borders
+% - Shaded row for emphasis
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Increases row height for better readability
+    \begin{tabular}{|c|l|l|c|c|}
+        \hline
+        % Shaded Header Row
+        \rowcolor{gray!30} 
+        \textbf{ID} & \textbf{Student Name} & \textbf{Subject} & \textbf{Marks} & \textbf{Grade} \\ 
+        \hline
+        
+        % Using \multirow to merge the Student Name across two rows
+        \multirow{2}{*}{101} & \multirow{2}{*}{Alice Johnson} & Mathematics & 92 & A \\ 
+        \cline{3-5} % Draw line only across columns 3 to 5
+         & & Physics & 88 & B+ \\ 
+        \hline
+        
+        102 & Bob Smith & Mathematics & 75 & C \\ 
+        \hline
+        
+        \multirow{2}{*}{103} & \multirow{2}{*}{Charlie Davis} & Mathematics & 95 & A+ \\ 
+        \cline{3-5}
+         & & Physics & 91 & A \\ 
+        \hline
+        
+        % Using \multicolumn to merge cells for a summary row
+        \rowcolor{yellow!20} % Shading the summary row for emphasis
+        \multicolumn{3}{|r|}{\textbf{Class Average Score:}} & \textbf{88.2} & \textbf{-} \\ 
+        \hline
+    \end{tabular}
+    \caption{Semester 1 Student Performance}
+\end{table}
+
+\newpage
+
+% ----------------------------------------------
+% SECTION 3: NEWSLETTER
+% ----------------------------------------------
+\section*{3. Campus Newsletter}
+
+% Title spans both columns
+\begin{center}
+    {\huge \textbf{The Weekly Tech Gazette}} \\
+    \textit{Volume 12, Issue 4}
+    \vspace{0.5cm}
+\end{center}
+
+% Multi-column environment
+\begin{multicols}{2}
+
+    % Article 1
+    \subsection*{Library Hours Extended}
+    \noindent Students will be pleased to hear that the central library is extending its operating hours starting next Monday. In response to the upcoming examination period, the administration has decided to keep the study halls open 24/7. This change aims to provide students with a quiet and safe environment for late-night study sessions. Security personnel will be increased during the night shifts to ensure safety. Additionally, the coffee shop inside the library will remain open until 2:00 AM.
+    
+    % Article 2
+    \subsection*{New AI Lab Opens}
+    \noindent The Computer Science department has officially inaugurated the new Artificial Intelligence Research Lab. Equipped with state-of-the-art GPUs and high-performance computing clusters, the lab is designed to foster innovation in machine learning and deep learning projects. Professor Alan Turing, the head of the department, mentioned that this facility is open to both undergraduate and postgraduate researchers. Workshops on Python and TensorFlow will be held every Friday afternoon to help students get started with the new equipment.
+
+\end{multicols}
+
+\end{document}
