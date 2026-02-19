@@ -8,15 +8,15 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Merge Sort" << std::endl;
     // first question
-    Analyzer analyzer1("float,firstName","age,name",ms,"InsertionSortOnAge");
+    Analyzer analyzer1("float,firstName","age,name",ms,"SortOnAge");
     analyzer1.analyze(0,"MergeSortOnAge"); // Merge sorting data on age 
     
     // second question
-    Analyzer analyzer2("float,firstName","age,name",ms,"InsertionSortOnName");
+    Analyzer analyzer2("float,firstName","age,name",ms,"SortOnName");
     analyzer2.analyze(1,"MergeSortOnName"); // Merge sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer3("float,firstName","age,name",ms,"InsertionSortOnAgeThenName",true);
+    Analyzer analyzer3("float,firstName","age,name",ms,"SortOnAgeThenName",true);
     analyzer3.analyze(0,"MergeSortOnAgeThenName"); // Merge sorting data first on age
     analyzer3.analyze(1,"MergeSortOnAgeThenName"); // Merge sorting data then on name
     

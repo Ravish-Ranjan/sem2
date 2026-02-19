@@ -8,15 +8,15 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Random Quick Sort" << std::endl;
     // first question
-    Analyzer analyzer7("float,firstName","age,name",rqs,"InsertionSortOnAge");
+    Analyzer analyzer7("float,firstName","age,name",rqs,"SortOnAge");
     analyzer7.analyze(0,"RandomQuickSortOnAge"); // RandomQuick sorting data on age 
     
     // second question
-    Analyzer analyzer8("float,firstName","age,name",rqs,"InsertionSortOnName");
+    Analyzer analyzer8("float,firstName","age,name",rqs,"SortOnName");
     analyzer8.analyze(1,"RandomQuickSortOnName"); // RandomQuick sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer9("float,firstName","age,name",rqs,"InsertionSortOnAgeThenName",true);
+    Analyzer analyzer9("float,firstName","age,name",rqs,"SortOnAgeThenName",true);
     analyzer9.analyze(0,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data first on age
     analyzer9.analyze(1,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data then on name
 

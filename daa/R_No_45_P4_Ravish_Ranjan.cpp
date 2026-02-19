@@ -8,15 +8,15 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Quick Sort" << std::endl;
     // first question
-    Analyzer analyzer7("float,firstName","age,name",qs,"InsertionSortOnAge");
+    Analyzer analyzer7("float,firstName","age,name",qs,"SortOnAge");
     analyzer7.analyze(0,"QuickSortOnAge"); // Quick sorting data on age 
     
     // second question
-    Analyzer analyzer8("float,firstName","age,name",qs,"InsertionSortOnName");
+    Analyzer analyzer8("float,firstName","age,name",qs,"SortOnName");
     analyzer8.analyze(1,"QuickSortOnName"); // Quick sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer9("float,firstName","age,name",qs,"InsertionSortOnAgeThenName",true);
+    Analyzer analyzer9("float,firstName","age,name",qs,"SortOnAgeThenName",true);
     analyzer9.analyze(0,"QuickSortOnAgeThenName"); // Quick sorting data first on age
     analyzer9.analyze(1,"QuickSortOnAgeThenName"); // Quick sorting data then on name
 
