@@ -1,6 +1,9 @@
 image*.png
+*.pdf
+!swcat/**/*.pdf
+!os/quiz/*.pdf
 
-**/*.zip
+*.zip
 
 # daa/input/*.json
 .hidden
