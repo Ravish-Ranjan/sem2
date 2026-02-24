@@ -1,5 +1,5 @@
 #include "ticTacToeLogic.cpp"
-#include "strats/stratMinMax.cpp"
+#include "strats/stratBFS.cpp"
 
 int main(){
     std::vector<Play> board(9,Play::_);

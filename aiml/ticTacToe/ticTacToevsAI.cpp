@@ -1,12 +1,11 @@
 #include "ticTacToeLogic.cpp"
-#include "strats/stratMinMax.cpp"
+#include "strats/stratBFS.cpp"
 
 int main(){
     std::vector<Play> board(9,Play::_);
     std::cout << "You play first (X)" << std::endl;
     printState(board);
     int place = 1;
-
     do{
         std::cout << "Enter playing position : ";
         std::cin >> place;

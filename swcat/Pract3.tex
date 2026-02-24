@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+
+\title{Pract3}
+\author{
+By : Ravish Ranjan \\
+Subject : Scientific Writing and Computational Analysis Tools \\
+Course : Masters of Computer Science
+}
+
+\begin{document}
+\maketitle
+\newpage
+
+\begin{enumerate}
+
+    \item 
+\begin{align*}
+f(x) &= f(a) + f'(a)(x-a) + \frac{f^n(a)}{2!}(x-a)^2 + \frac{f^{(3)}(a)}{3!}(x-a)^3 + \dots +\frac{f^{(n)}(a)}{n!}(x-a
+)^n + R_n, 
+\end{align*}
+
+    \item
+\begin{align*}
+R_n &= \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{(n+1)}
+\end{align*}
+
+    \item 
+\begin{align*}
+f(x) &= \frac{a_0}{2} + \sum_{x=1}^{\infty}[a_n \cos(\frac{n\pi x}{L}) + b_n\sin(\frac{n\pi x}{L})]
+\end{align*}
+
+    \item 
+\begin{align*}
+\rho(\frac{\partial v}{\partial t} + (v \cdot \nabla)v) &= -\nabla p + \mu\nabla^2 v + \text{f}
+\end{align*}
+
+    \item
+\begin{align*}
+\det(A) &= \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) \prod_{i=1}^{n} a_{i,\sigma(i)}
+\end{align*}
+
+    \item
+\begin{align*}
+\det(I+\lambda K) &= \sum_{n=0}^{\infty}\frac{\lambda ^n}{n!} \int \dots \int \det[K(x_i,x_j)]_{i,j=1}^n dx_1 \dots dx_n
+\end{align*}
+
+    \item 
+\begin{align*}
+f(x) &= \begin{cases}
+    x^2 +1, & x>0,\\
+    \det(A - xI), & x\leq0 \text{ and } A\in \mathbb{R}^{n\times n}, \\
+    \int_0^x t^3 dt, & x \in \mathbb{R}.
+\end{cases}
+\end{align*}
+\end{enumerate}
+
+\end{document}
