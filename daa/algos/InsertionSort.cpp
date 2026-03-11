@@ -7,7 +7,7 @@
 class InsertionSort : public Metric {
     public:
         void algo(json& data,int key) override{
-            for (int i = 1; i< data.size(); i++){
+            for (int i = 1; i < data.size(); i++){
                 json saved_row = data[i];
 
                 auto elem = saved_row[key]; // picking field of saved rowto sort the data with 

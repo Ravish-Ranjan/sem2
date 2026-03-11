@@ -52,7 +52,7 @@ df = df.dropna()
 
 match(saveFileType):
     case "csv":
-        df.to_csv("data/"+filename+".csv",index=False)
+        df.to_csv("data/"+filename+".csv",index=False,header=False)
     case "json":
         df.to_json("data/"+filename+".json",orient="values")
         
