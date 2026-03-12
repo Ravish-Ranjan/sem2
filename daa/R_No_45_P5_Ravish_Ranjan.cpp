@@ -1,5 +1,7 @@
 #include "analyzer.cpp"
 #include "algos/RandomQuickSort.cpp"
+#include "graph.cpp"
+#include <chrono>
 
 int main(){
     std::cout << "Installing python dependencies" << std::endl;
@@ -8,17 +10,17 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Random Quick Sort" << std::endl;
     // first question
-    Analyzer analyzer7("float,firstName","age,name",rqs,"SortOnAge");
-    analyzer7.analyze(0,"RandomQuickSortOnAge"); // RandomQuick sorting data on age 
+    Analyzer analyzer1("float,firstName","age,name",rqs,"SortOnAge",true);
+    json ana1 = analyzer1.analyze(0,"RandomQuickSortOnAge"); // RandomQuick sorting data on age 
     
     // second question
-    Analyzer analyzer8("float,firstName","age,name",rqs,"SortOnName");
-    analyzer8.analyze(1,"RandomQuickSortOnName"); // RandomQuick sorting data on name
+    Analyzer analyzer2("float,firstName","age,name",rqs,"SortOnName",true);
+    json ana2 = analyzer2.analyze(1,"RandomQuickSortOnName"); // RandomQuick sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer9("float,firstName","age,name",rqs,"SortOnAgeThenName",true);
-    analyzer9.analyze(0,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data first on age
-    analyzer9.analyze(1,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data then on name
+    Analyzer analyzer3("float,firstName","age,name",rqs,"SortOnAgeThenName",true,true);
+    analyzer3.analyze(0,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data first on age
+    json ana3 = analyzer3.analyze(1,"RandomQuickSortOnAgeThenName"); // RandomQuick sorting data then on name
 
     json data = json::array({
         json::array({"Reeta",18.5}),
@@ -38,8 +40,8 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
     
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",rqs,"CarHorsePowerSorting");
-    analyzer.analyze(2,"CarHorsePowerRandomQuickSorting","util/getcardata.py");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",rqs,"CarHorsePowerSorting",true);
+    json ana4 = analyzer.analyze(2,"CarHorsePowerRandomQuickSorting","util/getcardata.py");
 
     std::cout << "\n\nResult of First and Second (a) Questions with Quick Sort" << std::endl;
     Output read("");
@@ -47,14 +49,42 @@ int main(){
     json r2 = read.getSavedOutput("QuickSortOnName");
     json r3 = read.getSavedOutput("QuickSortOnAgeThenName");
     json r4 = read.getSavedOutput("CarHorsePowerQuickSorting");
-    Graph g1("QuickSortOnAge");
-    Graph g2("QuickSortOnName");
-    Graph g3("QuickSortOnAgeThenName");
-    Graph g4("CarHorsePowerQuickSorting");
-    g1.genGraph(r1["comps"],r1["assigns"]);
-    g2.genGraph(r2["comps"],r2["assigns"]);
-    g3.genGraph(r3["comps"],r3["assigns"]);
-    g4.genGraph(r4["comps"],r4["assigns"]);
+    
+    Graph g("p5_random_quick_sort_assignments");
+    g.genGraph(
+        {
+            ana1["assigns"],ana2["assigns"],ana3["assigns"],ana4["assigns"],
+            r1["assigns"],r2["assigns"],r3["assigns"],r4["assigns"]
+        },
+        {
+            "on_age","on_name","on_age_then_name","p2a_car_hp",
+            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_p2a_car_hp"
+        }
+    );
+
+    g.graphName = "p5_random_quick_sort_comparisions";
+    g.genGraph(
+        {
+            ana1["comps"],ana2["comps"],ana3["comps"],ana4["comps"],
+            r1["comps"],r2["comps"],r3["comps"],r4["comps"]
+        },
+        {
+            "on_age","on_name","on_age_then_name","p2a_car_hp",
+            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_p2a_car_hp"
+        }
+    );
+
+    g.graphName = "p5_random_quick_sort_time_microsec";
+    g.genGraph(
+        {
+            ana1["time"],ana2["time"],ana3["time"],ana4["time"],
+            r1["c-time"],r2["c-time"],r3["c-time"],r4["c-time"]
+        },
+        {
+            "on_age","on_name","on_age_then_name","p2a_car_hp",
+            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_p2a_car_hp"
+        }
+    );
 
     std::cout << "\n\nSecond (b) Questions with Random Quick Sort" << std::endl;
     std::cout << "Sorting(asc) dry bean data based on thier perimeter" << std::endl;
@@ -76,19 +106,26 @@ int main(){
     inp.inputFile = "./data/drybean.json";
     inp.getInput();
 
+    auto start = std::chrono::high_resolution_clock::now();
     rqs.algo(inp.input,columnMap["Perimeter"]);
+    auto stop = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double,std::micro> dur = stop-start;
+
     std::cout << "\nComparisions (Random Quick Sort): " << rqs.comps << std::endl;
     std::cout << "Assignments (Random Quick Sort): " << rqs.assigns << std::endl;
+    std::cout << "Time (Random Quick Sort)(microsec): " << dur.count() << std::endl;
 
     Output readOld("");
     json isData = readOld.getSavedOutput("DryBeanDataQuickSort");
     std::cout << "Comparisions (Quick Sort): " << isData["comps"][0] << std::endl;
     std::cout << "Assignments (Quick Sort): " << isData["assigns"][0] << std::endl;
+    std::cout << "Time (Quick Sort)(microsec): " << isData["c-time"][0] << std::endl;
 
     Output out("DryBeanDataRandomQuickSort");
     out.outputs["data"] = inp.input;
     out.outputs["comps"] = {rqs.comps};
     out.outputs["assigns"] = {rqs.assigns};
+    out.outputs["c-time"] = {dur.count()};
     out.saveOutput();
     return 0;
 }

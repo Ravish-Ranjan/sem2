@@ -19,6 +19,7 @@ class Output{
             this->outputFileName = outFN;
             outputs["data"] = {};
             outputs["comps"] = {};
+            outputs["c-time"] = {};
             outputs["assigns"] = {};
         }
 

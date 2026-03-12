@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include "analyzer.cpp"
 #include "algos/InsertionSort.cpp"
+#include <chrono>
 
 int main(){
     InsertionSort s;
@@ -26,15 +27,22 @@ int main(){
     Input inp;
     inp.inputFile = "./data/drybean.json";
     inp.getInput();
-
+    
+    auto start = std::chrono::high_resolution_clock::now();
     s.algo(inp.input,columnMap["Perimeter"]);
+    auto stop = std::chrono::high_resolution_clock::now();
+
+    std::chrono::duration<double,std::micro> dur = stop-start;
+
     std::cout << "Comparisions : " << s.comps << std::endl;
     std::cout << "Assignments : " << s.assigns << std::endl;
+    std::cout << "Time(microsec) : " << dur.count() << std::endl;
 
     Output out("DryBeanDataInsertionSort");
     out.outputs["data"] = inp.input;
     out.outputs["comps"] = {s.comps};
     out.outputs["assigns"] = {s.assigns};
+    out.outputs["c-time"] = {dur.count()};
     out.saveOutput();
     
     return 0;

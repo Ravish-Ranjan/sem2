@@ -1,6 +1,7 @@
 #include <iostream>
 #include "analyzer.cpp"
 #include "algos/InsertionSort.cpp"
+#include "graph.cpp"
 
 
 int main(){
@@ -12,8 +13,14 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
 
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting");
-    analyzer.analyze(2,"CarHorsePowerSorting","util/getcardata.py");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting",true,true);
+    json analytics = analyzer.analyze(2,"CarHorsePowerSorting","util/getcardata.py");
+
+    Graph g("p2_insersion_sort");
+    g.genGraph({analytics["comps"],analytics["assigns"]},{"comparisions","assignments"});
+    
+    g.graphName = "p2_insersion_sort_time_microsec";
+    g.genGraph({analytics["time"]},{"time"});
 
     return 0;
 }

@@ -4,7 +4,7 @@
 #include "input.cpp"
 #include "metric.cpp"
 #include "output.cpp"
-#include "graph.cpp"
+#include <chrono>
 
 // analyzer class for re-analyzing any algorithms
 class Analyzer{
@@ -17,20 +17,25 @@ class Analyzer{
         bool preserveIntermediate; // flag to preserve data inbetween multiple analyzer runs
         json data; // cache intermedia te data
         int repetitions = 10;
+        bool getTime;
+        std::vector<double> comps,assigns,time;
 
         // class constructor 
-        Analyzer(std::string inpTp,std::string inpNm,Metric& algoObj,std::string algoNm = "algo",bool presIntr = false) : algoObj(algoObj){
+        Analyzer(std::string inpTp,std::string inpNm,Metric& algoObj,std::string algoNm = "algo",bool getTime = false,bool presIntr=false) : algoObj(algoObj){
             this->inputTypes = inpTp;
             this->inputNames = inpNm;
             this->algoName = algoNm;
             this->preserveIntermediate = presIntr;
+            this->getTime = getTime;
+            if (presIntr){
+                comps = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+                assigns = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+                time = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+            }
         }
 
         // analyzer function to analyze any algorithm
         json analyze(int key,std::string outNm = "output",std::string generatorFile = "util/gendataset.py"){
-            std::vector<double> comps,assigns; // vectors to store comparisions and assignments of the run
-            
-            Graph grf(outNm); // object of class graph to plot graph
             Output out(outNm); // object of class output to save output
 
             std::cout << "Input file generated in input folder" << std::endl;
@@ -42,6 +47,7 @@ class Analyzer{
         
                 double totalComps = 0; // comparisions for current size
                 double totalAssigns = 0; // assignments for current size
+                double totalTime = 0;
                 json saveData; // data for saving in output
         
                 std::string sizeStr = std::to_string(size);
@@ -64,17 +70,37 @@ class Analyzer{
                             this->data[sizeStr].push_back(copy); // saving cache
                         }
                     }
-                
-                    algoObj.algo(copy,key); // running algorithm
-                
+                    
+                    if (this->getTime){
+                        auto start = std::chrono::high_resolution_clock::now();
+                        algoObj.algo(copy,key); // running algorithm
+                        auto stop = std::chrono::high_resolution_clock::now();
+                        std::chrono::duration<double,std::micro> dur = stop-start;
+                        totalTime += dur.count(); // accumalating time 
+                    } else {
+                        algoObj.algo(copy,key); // running algorithm
+                    }
+
                     totalComps += algoObj.comps; // accumalating comparisions 
                     totalAssigns += algoObj.assigns; // accumalating assignments
                     algoObj.reset(); // resetting metrics for current run
                 
                     if (rep == 9) saveData = copy; // saving last run for output
                 }
-                comps.push_back(totalComps/(double)10.0); // saving avg comparisions for graph 
-                assigns.push_back(totalAssigns/(double)10.0); // saving avg assignments for graph
+
+                if (this->preserveIntermediate){
+                    int idx = (size-1)/10;
+                    comps[idx] += totalComps/(double)10.0; // saving avg comparisions for graph 
+                    assigns[idx] += totalAssigns/(double)10.0; // saving avg assignments for graph
+                    if (this->getTime)
+                        time[idx] += totalTime/(double)10.0;
+                } else {
+                    comps.push_back(totalComps/(double)10.0); // saving avg comparisions for graph 
+                    assigns.push_back(totalAssigns/(double)10.0); // saving avg assignments for graph
+                    if (this->getTime)
+                        time.push_back(totalTime/(double)10.0);
+                }
+                 // saving avg time for graph
                 
                 out.outputs["data"][sizeStr] = saveData; // saving data to output object
 
@@ -86,10 +112,14 @@ class Analyzer{
             }
             out.outputs["comps"] = comps;
             out.outputs["assigns"] = assigns;
-            grf.genGraph(comps,assigns); // generating graph
+            out.outputs["c-time"] = time;
+            
+            std::cout << std::endl;
+
+            std::cout << std::endl;
             out.saveOutput(); // saving output
 
-            return {{"comps",comps},{"assigns",assigns}}; // returning comparisions and assignments
+            return {{"comps",comps},{"assigns",assigns},{"time",time}}; // returning comparisions, assignments and time
         }
 };
 

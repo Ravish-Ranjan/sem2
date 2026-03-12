@@ -1,5 +1,7 @@
 #include "analyzer.cpp"
 #include "algos/MergeSort.cpp"
+#include "graph.cpp"
+#include <chrono>
 
 int main(){
     std::cout << "Installing python dependencies" << std::endl;
@@ -8,17 +10,17 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Merge Sort" << std::endl;
     // first question
-    Analyzer analyzer1("float,firstName","age,name",ms,"SortOnAge");
-    analyzer1.analyze(0,"MergeSortOnAge"); // Merge sorting data on age 
+    Analyzer analyzer1("float,firstName","age,name",ms,"SortOnAge",false,true);
+    json ana1 = analyzer1.analyze(0,"MergeSortOnAge"); // Merge sorting data on age 
     
     // second question
-    Analyzer analyzer2("float,firstName","age,name",ms,"SortOnName");
-    analyzer2.analyze(1,"MergeSortOnName"); // Merge sorting data on name
+    Analyzer analyzer2("float,firstName","age,name",ms,"SortOnName",false,true);
+    json ana2 = analyzer2.analyze(1,"MergeSortOnName"); // Merge sorting data on name
     
     // third question (with persmstent data)
-    Analyzer analyzer3("float,firstName","age,name",ms,"SortOnAgeThenName",true);
+    Analyzer analyzer3("float,firstName","age,name",ms,"SortOnAgeThenName",true,true);
     analyzer3.analyze(0,"MergeSortOnAgeThenName"); // Merge sorting data first on age
-    analyzer3.analyze(1,"MergeSortOnAgeThenName"); // Merge sorting data then on name
+    json ana3 = analyzer3.analyze(1,"MergeSortOnAgeThenName"); // Merge sorting data then on name
     
     json data = json::array({
         json::array({"Reeta",18.5}),
@@ -38,8 +40,8 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
     
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerSorting");
-    analyzer.analyze(2,"CarHorsePowerMergeSorting","util/getcardata.py");
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",ms,"CarHorsePowerSorting",false,true);
+    json ana4 = analyzer.analyze(2,"CarHorsePowerMergeSorting","util/getcardata.py");
     
     std::cout << "\n\nResult of First and Second (a) Questions with Insertion Sort" << std::endl;
     // reading old insertion sort run data
@@ -48,14 +50,42 @@ int main(){
     json r2 = read.getSavedOutput("InsertionSortOnName");
     json r3 = read.getSavedOutput("InsertionSortOnAgeThenName");
     json r4 = read.getSavedOutput("CarHorsePowerSorting");
-    Graph g1("InsertionSortOnAge");
-    Graph g2("InsertionSortOnName");
-    Graph g3("InsertionSortOnAgeThenName");
-    Graph g4("CarHorsePowerSorting");
-    g1.genGraph(r1["comps"],r1["assigns"]);
-    g2.genGraph(r2["comps"],r2["assigns"]);
-    g3.genGraph(r3["comps"],r3["assigns"]);
-    g4.genGraph(r4["comps"],r4["assigns"]);
+    
+    Graph g("p3_merge_sort_assignments");
+    g.genGraph(
+        {
+            ana1["assigns"],ana2["assigns"],ana3["assigns"],ana4["assigns"],
+            r1["assigns"],r2["assigns"],r3["assigns"],r4["assigns"]
+        },
+        {
+            "on_age","on_name","on_age_then_name","p2a_car_hp",
+            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_p2a_car_hp"
+        }
+    );
+
+    g.graphName = "p3_merge_sort_comparisions";
+    g.genGraph(
+        {
+            ana1["comps"],ana2["comps"],ana3["comps"],ana4["comps"],
+            r1["comps"],r2["comps"],r3["comps"],r4["comps"]
+        },
+        {
+            "on_age","on_name","on_age_then_name","p2a_car_hp",
+            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_p2a_car_hp"
+        }
+    );
+
+    g.graphName = "p3_merge_sort_time_microsec";
+    g.genGraph(
+        {
+            ana1["time"],ana2["time"],ana3["time"],ana4["time"],
+            r1["c-time"],r2["c-time"],r3["c-time"],r4["c-time"]
+        },
+        {
+            "on_age","on_name","on_age_then_name","p2a_car_hp",
+            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_p2a_car_hp"
+        }
+    );
     
     std::cout << "\n\nSecond (b) Questions with Merge Sort" << std::endl;
     
@@ -78,20 +108,27 @@ int main(){
     inp.inputFile = "./data/drybean.json";
     inp.getInput();
 
+    auto start = std::chrono::high_resolution_clock::now();
     ms.algo(inp.input,columnMap["Perimeter"]);
+    auto stop = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double,std::micro> dur = stop - start;
+
     std::cout << "Comparisions (Merge Sort): " << ms.comps << std::endl;
     std::cout << "Assignments (Merge Sort): " << ms.assigns << std::endl;
+    std::cout << "Time (Merge Sort)(microsec): " << dur.count() << std::endl;
     
     std::cout << "\n\nResult of Second (b) Questions with Insertion Sort" << std::endl;
     Output readOld("");
     json isData = readOld.getSavedOutput("DryBeanDataInsertionSort");
     std::cout << "Comparisions (Insertion Sort): " << isData["comps"][0] << std::endl;
     std::cout << "Assignments (Insertion Sort): " << isData["assigns"][0] << std::endl;
+    std::cout << "Assignments (Insertion Sort): " << isData["c-time"][0] << std::endl;
 
     Output out("DryBeanDataMergeSort");
     out.outputs["data"] = inp.input;
     out.outputs["comps"] = {ms.comps};
     out.outputs["assigns"] = {ms.assigns};
+    out.outputs["c-time"] = {dur.count()};
     out.saveOutput();
     return 0;
 }
