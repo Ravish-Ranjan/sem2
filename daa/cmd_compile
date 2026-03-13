@@ -1,0 +1,17 @@
+#!/bin/bash
+
+p=$1
+
+if [ -z "$1" ]; then
+    g++ ./R_No_45_P1_Ravish_Ranjan.cpp -o ./R_No_45_P1_Ravish_Ranjan.out
+    g++ ./R_No_45_P2_Ravish_Ranjan.cpp -o ./R_No_45_P2_Ravish_Ranjan.out
+    g++ ./R_No_45_P2b_Ravish_Ranjan.cpp -o ./R_No_45_P2b_Ravish_Ranjan.out
+    g++ ./R_No_45_P3_Ravish_Ranjan.cpp -o ./R_No_45_P3_Ravish_Ranjan.out
+    g++ ./R_No_45_P4_Ravish_Ranjan.cpp -o ./R_No_45_P4_Ravish_Ranjan.out
+    g++ ./R_No_45_P5_Ravish_Ranjan.cpp -o ./R_No_45_P5_Ravish_Ranjan.out
+else 
+    prog=$(./R_No_45_P$1_Ravish_Ranjan.cpp)
+    output=$(./R_No_45_P$1_Ravish_Ranjan.out)
+    g++ prog -o output
+fi
+# g++ ./R_No_45_P6_Ravish_Ranjan.cpp -o ./R_No_45_P6_Ravish_Ranjan.out
