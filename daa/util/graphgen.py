@@ -37,7 +37,7 @@ for i in data:
 x = data["x"][:maxlen]
 
 plt.style.use("dark_background")
-figure,axis = plt.subplots()
+figure,axis = plt.subplots(figsize=(12,10))
 plt.grid(True)
 
 for i in data:
