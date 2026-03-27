@@ -2,6 +2,7 @@ image*.png
 *.pdf
 !swcat/**/*.pdf
 !os/quiz/*.pdf
+!cs/**/*.pdf
 **/cmd_*
 
 *.zip
