@@ -10,11 +10,11 @@ int main(){
 
     std::cout << "\n\nFirst Questions with Quick Sort" << std::endl;
     // first question
-    Analyzer analyzer1("float,firstName","age,name",qs,"SortOnAge",false,true);
+    Analyzer analyzer1("float,firstName","age,name",qs,"SortOnAge",true);
     json ana1 = analyzer1.analyze(0,"QuickSortOnAge"); // Quick sorting data on age 
     
     // second question
-    Analyzer analyzer2("float,firstName","age,name",qs,"SortOnName",false,true);
+    Analyzer analyzer2("float,firstName","age,name",qs,"SortOnName",true);
     json ana2 = analyzer2.analyze(1,"QuickSortOnName"); // Quick sorting data on name
     
     // third question (with persmstent data)
@@ -40,7 +40,7 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
     
-    Analyzer analyzer4("","carname,horsepower,weight,cylinders,accelaration",qs,"CarHorsePowerSorting",false,true);
+    Analyzer analyzer4("","carname,horsepower,weight,cylinders,accelaration",qs,"CarHorsePowerSorting",true);
     json ana4 = analyzer4.analyze(2,"CarHorsePowerQuickSorting","util/getcardata.py");
 
     std::cout << "\n\nResult of First and Second (a) Questions with Insertion Sort & Merge Sort" << std::endl;
@@ -62,9 +62,9 @@ int main(){
             r5["assigns"],r6["assigns"],r7["assigns"],r8["assigns"]
         },
         {
-            "on_age","on_name","on_age_then_name","p2a_car_hp",
-            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_p2a_car_hp",
-            "mgr_on_age","mgr_on_name","mgr_on_age_then_name","mgr_p2a_car_hp",
+            "on_age","on_name","on_age_then_name","on_p2a_car_hp",
+            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_on_p2a_car_hp",
+            "mgr_on_age","mgr_on_name","mgr_on_age_then_name","mgr_on_p2a_car_hp",
         }
     );
 
@@ -76,9 +76,9 @@ int main(){
             r5["comps"],r6["comps"],r7["comps"],r8["comps"]
         },
         {
-            "on_age","on_name","on_age_then_name","p2a_car_hp",
-            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_p2a_car_hp",
-            "mgr_on_age","mgr_on_name","mgr_on_age_then_name","mgr_p2a_car_hp",
+            "on_age","on_name","on_age_then_name","on_p2a_car_hp",
+            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_on_p2a_car_hp",
+            "mgr_on_age","mgr_on_name","mgr_on_age_then_name","mgr_on_p2a_car_hp",
         }
     );
 
@@ -90,9 +90,9 @@ int main(){
             r5["c-time"],r6["c-time"],r7["c-time"],r8["c-time"]
         },
         {
-            "on_age","on_name","on_age_then_name","p2a_car_hp",
-            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_p2a_car_hp",
-            "mgr_on_age","mgr_on_name","mgr_on_age_then_name","mgr_p2a_car_hp",
+            "on_age","on_name","on_age_then_name","on_p2a_car_hp",
+            "ins_on_age","ins_on_name","ins_on_age_then_name","ins_on_p2a_car_hp",
+            "mgr_on_age","mgr_on_name","mgr_on_age_then_name","mgr_on_p2a_car_hp",
         }
     );
     

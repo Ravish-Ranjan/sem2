@@ -57,8 +57,8 @@ int main(){
             r1["assigns"],r2["assigns"],r3["assigns"],r4["assigns"]
         },
         {
-            "on_age","on_name","on_age_then_name","p2a_car_hp",
-            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_p2a_car_hp"
+            "on_age","on_name","on_age_then_name","on_p2a_car_hp",
+            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_on_p2a_car_hp"
         }
     );
 
@@ -69,8 +69,8 @@ int main(){
             r1["comps"],r2["comps"],r3["comps"],r4["comps"]
         },
         {
-            "on_age","on_name","on_age_then_name","p2a_car_hp",
-            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_p2a_car_hp"
+            "on_age","on_name","on_age_then_name","on_p2a_car_hp",
+            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_on_p2a_car_hp"
         }
     );
 
@@ -81,8 +81,8 @@ int main(){
             r1["c-time"],r2["c-time"],r3["c-time"],r4["c-time"]
         },
         {
-            "on_age","on_name","on_age_then_name","p2a_car_hp",
-            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_p2a_car_hp"
+            "on_age","on_name","on_age_then_name","on_p2a_car_hp",
+            "quic_on_age","quic_on_name","quic_on_age_then_name","quic_on_p2a_car_hp"
         }
     );
 

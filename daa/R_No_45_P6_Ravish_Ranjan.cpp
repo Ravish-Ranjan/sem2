@@ -40,60 +40,64 @@ int main(){
     json r11 = read.getSavedOutput("RandomQuickSortOnName");
     json r12 = read.getSavedOutput("RandomQuickSortOnAgeThenName");
     
-    Graph g("p6_radix_sort_assignments");
+    Graph g("p6_radix_sort_assignments_on_age");
  
-    g.genGraph(
-        {
-            ana1["assigns"],ana2["assigns"],ana3["assigns"],
-            r1["assigns"],r2["assigns"],r3["assigns"],
-            r4["assigns"],r5["assigns"],r6["assigns"],
-            r7["assigns"],r8["assigns"],r9["assigns"],
-            r10["assigns"],r11["assigns"],r12["assigns"]
-        },
-        {
-            "on_age","on_name","on_age_then_name",
-            "ins_on_age","ins_on_name","ins_on_age_then_name",
-            "mrg_on_age","mrg_on_name","mrg_on_age_then_name",
-            "quic_on_age","quic_on_name","quic_on_age_then_name",
-            "rand_quic_on_age","rand_quic_on_name","rand_quic_on_age_then_name",
-        }
-    );
+    // g.genGraph(
+    //     {ana1["assigns"],r1["assigns"],r4["assigns"],r7["assigns"],r10["assigns"]},
+    //     {"on_age","ins_on_age","mrg_on_age","quic_on_age","rand_quic_on_age"}
+    // );
+    
+    // g.graphName = "p6_radix_sort_assignments_on_name";
+    // g.genGraph(
+    //     {ana2["assigns"],r2["assigns"],r5["assigns"],r8["assigns"],r11["assigns"]},
+    //     {"on_name","ins_on_name","mrg_on_name","quic_on_name","rand_quic_on_name"}
+    // );
 
-    g.graphName = "p6_radix_sort_comparisions";
+    // g.graphName = "p6_radix_sort_assignments_on_age_then_name";
+    // g.genGraph(
+    //     {ana3["assigns"],r3["assigns"],r6["assigns"],r9["assigns"],r12["assigns"]},
+    //     {"on_age_then_name","ins_on_age_then_name","mrg_on_age_then_name","quic_on_age_then_name","rand_quic_on_age_then_name"}
+    // );
+    
+    // // ----------------------------------------------------------------------------
+    // g.graphName = "p6_radix_sort_comparisions_on_age";
+    // g.genGraph(
+    //     {ana1["comps"],r1["comps"],r4["comps"],r7["comps"],r10["comps"]},
+    //     {"on_age","ins_on_age","mrg_on_age","quic_on_age","rand_quic_on_age"}
+    // );
+    
+    // g.graphName = "p6_radix_sort_comparisions_on_name";
+    // g.genGraph(
+    //     {ana2["comps"],r2["comps"],r5["comps"],r8["comps"],r11["comps"]},
+    //     {"on_name","ins_on_name","mrg_on_name","quic_on_name","rand_quic_on_name"}
+    // );
+
+    // g.graphName = "p6_radix_sort_comparisions_on_age_then_name";
+    // g.genGraph(
+    //     {ana3["comps"],r3["comps"],r6["comps"],r9["comps"],r12["comps"]},
+    //     {"on_age_then_name","ins_on_age_then_name","mrg_on_age_then_name","quic_on_age_then_name","rand_quic_on_age_then_name"}
+    // );
+    
+    // ----------------------------------------------------------------------------
+    g.graphName = "p6_radix_sort_time_microsec_on_age";
     g.genGraph(
-        {
-            ana1["comps"],ana2["comps"],ana3["comps"],
-            r1["comps"],r2["comps"],r3["comps"],
-            r4["comps"],r5["comps"],r6["comps"],
-            r7["comps"],r8["comps"],r9["comps"],
-            r10["comps"],r11["comps"],r12["comps"]
-        },
-        {
-            "on_age","on_name","on_age_then_name",
-            "ins_on_age","ins_on_name","ins_on_age_then_name",
-            "mrg_on_age","mrg_on_name","mrg_on_age_then_name",
-            "quic_on_age","quic_on_name","quic_on_age_then_name",
-            "rand_quic_on_age","rand_quic_on_name","rand_quic_on_age_then_name",
-        }
+        {ana1["time"],r1["c-time"],r4["c-time"],r7["c-time"],r10["c-time"]},
+        {"on_age","ins_on_age","mrg_on_age","quic_on_age","rand_quic_on_age"}
     );
     
-    g.graphName = "p6_radix_sort_time_microsec";
+    g.graphName = "p6_radix_sort_time_microsec_on_name";
     g.genGraph(
-        {
-            ana1["time"],ana2["time"],ana3["time"],
-            r1["c-time"],r2["c-time"],r3["c-time"],
-            r4["c-time"],r5["c-time"],r6["c-time"],
-            r7["c-time"],r8["c-time"],r9["c-time"],
-            r10["c-time"],r11["c-time"],r12["c-time"]
-        },
-        {
-            "on_age","on_name","on_age_then_name",
-            "ins_on_age","ins_on_name","ins_on_age_then_name",
-            "mrg_on_age","mrg_on_name","mrg_on_age_then_name",
-            "quic_on_age","quic_on_name","quic_on_age_then_name",
-            "rand_quic_on_age","rand_quic_on_name","rand_quic_on_age_then_name",
-        }
+        {ana2["time"],r2["c-time"],r5["c-time"],r8["c-time"],r11["c-time"]},
+        {"on_name","ins_on_name","mrg_on_name","quic_on_name","rand_quic_on_name"}
     );
+
+    g.graphName = "p6_radix_sort_time_microsec_on_age_then_name";
+    g.genGraph(
+        {ana3["time"],r3["c-time"],r6["c-time"],r9["c-time"],r12["c-time"]},
+        {"on_age_then_name","ins_on_age_then_name","mrg_on_age_then_name","quic_on_age_then_name","rand_quic_on_age_then_name"}
+    );
+
+    
     
     return 0;
 }

@@ -13,7 +13,7 @@ int main(){
     runCommand("python ./util/fetchDataset.py id:9 filename:cardata savefiletype:json");
     std::cout << "dataset fetched in data folder" << std::endl;
 
-    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting",true,true);
+    Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting",true);
     json analytics = analyzer.analyze(2,"CarHorsePowerSorting","util/getcardata.py");
 
     Graph g("p2_insersion_sort");

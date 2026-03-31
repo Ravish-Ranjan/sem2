@@ -19,7 +19,7 @@ for i in range(1,len(sys.argv)):
         data[dataLabel] = list(map(float,dataValues.split(",")))
     elif dataLabel == "xLabel":
         xLable = dataValues
-    elif dataLabel == "yLable":
+    elif dataLabel == "yLabel":   # fixed typo here
         yLabel = dataValues
     elif dataLabel == "title":
         title = dataValues
@@ -40,14 +40,46 @@ plt.style.use("dark_background")
 figure,axis = plt.subplots(figsize=(12,10))
 plt.grid(True)
 
+# ---- STYLE GROUPING LOGIC ----
+line_styles = ['-', '--', '-.', ':']
+markers = ['o', 's', '^', 'D', 'x', '*']
+
+prefix_style_map = {}
+style_index = 0
+# ------------------------------
+
 for i in data:
-    if (i != "x"):
-        axis.plot(x,data[i],label=i)
+    if i == "x":
+        continue
+
+    prefix = i.split("_")[0]
+
+    if prefix not in prefix_style_map:
+        prefix_style_map[prefix] = {
+            "linestyle": line_styles[style_index % len(line_styles)],
+            "marker": markers[style_index % len(markers)]
+        }
+        style_index += 1
+
+    style = prefix_style_map[prefix]
+
+    axis.plot(
+        x,
+        data[i],
+        label=i,
+        linestyle=style["linestyle"],
+        marker=style["marker"]
+    )
 
 axis.legend()
 plt.xlabel(xLable)
 plt.ylabel(yLabel)
 plt.title(title)
 
-plt.savefig(str(Path.cwd())+f"/images/{fileName}.png")
+output_path = Path.cwd() / "images"
+output_path.mkdir(exist_ok=True)
+
+file_path = output_path / f"{fileName}.png"
+plt.savefig(str(file_path))
+
 print(f"./images/{fileName}.png")
