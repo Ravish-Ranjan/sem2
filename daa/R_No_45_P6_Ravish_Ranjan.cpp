@@ -40,7 +40,7 @@ int main(){
     json r11 = read.getSavedOutput("RandomQuickSortOnName");
     json r12 = read.getSavedOutput("RandomQuickSortOnAgeThenName");
     
-    Graph g("p5_radix_sort_assignments");
+    Graph g("p6_radix_sort_assignments");
  
     g.genGraph(
         {
@@ -59,7 +59,7 @@ int main(){
         }
     );
 
-    g.graphName = "p5_radix_sort_comparisions";
+    g.graphName = "p6_radix_sort_comparisions";
     g.genGraph(
         {
             ana1["comps"],ana2["comps"],ana3["comps"],
@@ -77,7 +77,7 @@ int main(){
         }
     );
     
-    g.graphName = "p5_radix_sort_time_microsec";
+    g.graphName = "p6_radix_sort_time_microsec";
     g.genGraph(
         {
             ana1["time"],ana2["time"],ana3["time"],
