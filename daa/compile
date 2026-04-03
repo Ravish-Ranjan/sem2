@@ -1,0 +1,13 @@
+#!/bin/bash
+
+p=$1
+
+if [ -z "$1" ]; then
+    for i in 1 2 2b 3 4 5
+    do
+        g++ ./R_No_45_P${i}_Ravish_Ranjan.cpp -o ./R_No_45_P${i}_Ravish_Ranjan.out
+    done
+else 
+    g++ ./R_No_45_P${p}_Ravish_Ranjan.cpp -o ./R_No_45_P${p}_Ravish_Ranjan.out
+fi
+# g++ ./R_No_45_P6_Ravish_Ranjan.cpp -o ./R_No_45_P6_Ravish_Ranjan.out

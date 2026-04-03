@@ -19,7 +19,7 @@ for i in range(1,len(sys.argv)):
         data[dataLabel] = list(map(float,dataValues.split(",")))
     elif dataLabel == "xLabel":
         xLable = dataValues
-    elif dataLabel == "yLabel":   # fixed typo here
+    elif dataLabel == "yLabel":   
         yLabel = dataValues
     elif dataLabel == "title":
         title = dataValues
@@ -37,16 +37,14 @@ for i in data:
 x = data["x"][:maxlen]
 
 plt.style.use("dark_background")
-figure,axis = plt.subplots(figsize=(12,10))
+figure,axis = plt.subplots(figsize=(10,8))
 plt.grid(True)
 
-# ---- STYLE GROUPING LOGIC ----
 line_styles = ['-', '--', '-.', ':']
 markers = ['o', 's', '^', 'D', 'x', '*']
 
 prefix_style_map = {}
 style_index = 0
-# ------------------------------
 
 for i in data:
     if i == "x":
