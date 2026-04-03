@@ -1,5 +1,5 @@
-#ifndef GRAPH_CPP
-#define GRAPH_CPP
+#ifndef CREATE_GRAPH_CPP
+#define CREATE_GRAPH_CPP
 
 #include <sstream>
 #include <string>
@@ -22,11 +22,11 @@ void openImageInNativeViewer(const std::string& imagePath) {
 
 
 // graph class for generating class
-class Graph{
+class GraphPlot{
     public:
         std::string graphName = ""; // graph filename and graph title
         // constructor of graph class to store filename and graph title
-        Graph(std::string grfNm = "algo-analyze"){
+        GraphPlot(std::string grfNm = "algo-analyze"){
             this->graphName = grfNm;
         }
         

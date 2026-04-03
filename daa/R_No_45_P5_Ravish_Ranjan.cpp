@@ -50,7 +50,7 @@ int main(){
     json r3 = read.getSavedOutput("QuickSortOnAgeThenName");
     json r4 = read.getSavedOutput("CarHorsePowerQuickSorting");
     
-    Graph g("p5_random_quick_sort_assignments");
+    GraphPlot g("p5_random_quick_sort_assignments");
     g.genGraph(
         {
             ana1["assigns"],ana2["assigns"],ana3["assigns"],ana4["assigns"],

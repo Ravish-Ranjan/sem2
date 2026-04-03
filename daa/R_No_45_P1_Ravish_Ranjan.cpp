@@ -21,7 +21,7 @@ int main(){
     analyzer3.analyze(0,"InsertionSortOnAgeThenName"); // insertion sorting data first on age
     json ana3 = analyzer3.analyze(1,"InsertionSortOnAgeThenName"); // insertion sorting data then on name
 
-    Graph g("p1_insersion_sort_comparsions");
+    GraphPlot g("p1_insersion_sort_comparsions");
     g.genGraph(
         {ana1["comps"],ana2["comps"],ana3["comps"]},
         {"on_age","on_name","on_age_then_name"}

@@ -40,7 +40,7 @@ int main(){
     json r11 = read.getSavedOutput("RandomQuickSortOnName");
     json r12 = read.getSavedOutput("RandomQuickSortOnAgeThenName");
     
-    Graph g("p6_radix_sort_assignments_on_age");
+    GraphPlot g("p6_radix_sort_assignments_on_age");
  
     // g.genGraph(
     //     {ana1["assigns"],r1["assigns"],r4["assigns"],r7["assigns"],r10["assigns"]},

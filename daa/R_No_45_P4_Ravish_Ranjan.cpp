@@ -54,7 +54,7 @@ int main(){
     json r7 = read.getSavedOutput("MergeSortOnAgeThenName");
     json r8 = read.getSavedOutput("CarHorsePowerMergeSorting");
 
-    Graph g("p4_quick_sort_assignments");
+    GraphPlot g("p4_quick_sort_assignments");
     g.genGraph(
         {
             ana1["assigns"],ana2["assigns"],ana3["assigns"],ana4["assigns"],

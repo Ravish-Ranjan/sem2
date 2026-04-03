@@ -16,7 +16,7 @@ int main(){
     Analyzer analyzer("","carname,horsepower,weight,cylinders,accelaration",s,"CarHorsePowerSorting",true);
     json analytics = analyzer.analyze(2,"CarHorsePowerSorting","util/getcardata.py");
 
-    Graph g("p2_insersion_sort");
+    GraphPlot g("p2_insersion_sort");
     g.genGraph({analytics["comps"],analytics["assigns"]},{"comparisions","assignments"});
     
     g.graphName = "p2_insersion_sort_time_microsec";
