@@ -57,6 +57,12 @@ class Graph{
             this->nodes.push_back(node);
         }
 
+        void addNodes(std::vector<Node*> inputNodes){
+            for (Node* node:inputNodes){
+                this->nodes.push_back(node);
+            }
+        }
+
         void addEdge(Node* from,Node* to,WeightType weight=0.0){
             Edge<WeightType>* edge = new Edge<WeightType>(from,to,weight,directed);
             this->edges.push_back(edge);
@@ -92,6 +98,16 @@ class Graph{
             }
         }
 
+        std::vector<Edge<WeightType>*> getEdgesFromNode(Node* node){
+            std::vector<Edge<WeightType>*> res;
+            for(Edge<WeightType>* edge : this->edges){
+                if (edge->from->name == node->name || (!edge->directed && edge->to->name == node->name)){
+                    res.push_back(edge);
+                }
+            }
+            return res;
+        }
+
         std::string plot(
             const std::string& filename,
             const std::string& title,
@@ -100,7 +116,6 @@ class Graph{
             bool showEdgeWeight = false
         ){
             std::stringstream ss;
-            std::cout << filename << title << std::endl;
             ss << "python ./util/plotgraph.py filename:" << filename << " title:" << title << " ";
             if (directed)
                 ss << "directed:true ";

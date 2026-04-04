@@ -41,7 +41,7 @@ class BFS{
                     }
                 }
             }
-            tree.plot("p7_bfs","BFS",true,false,weighted);
+            tree.plot("p7_bfs","bfs",true,false,weighted);
         }
 };
 

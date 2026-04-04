@@ -17,7 +17,7 @@ class DFS{
             Graph<WeightType,directed,weighted>* tree = new Graph<WeightType,directed,weighted>();
             tree->addNode(src);
             dfs(src,tree);
-            tree->plot("p7_dfs","DFS",true,false,weighted);
+            tree->plot("p7_dfs","dfs",true,false,weighted);
         }
     private:
         void dfs(Node* src,Graph<WeightType,directed,weighted>* tree){

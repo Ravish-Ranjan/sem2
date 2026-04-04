@@ -1,5 +1,7 @@
 #include "./algos/BFS.cpp"
 #include "./algos/DFS.cpp"
+#include "./algos/Prims.cpp"
+#include "./algos/Kruskals.cpp"
 
 int main(){
     Graph<int,true,true>* g = new Graph<int,true,true>();
@@ -12,31 +14,41 @@ int main(){
     Node* F = new Node("F");
     Node* G = new Node("G");
 
-    g->addNode(A);
-    g->addNode(B);
-    g->addNode(C);
-    g->addNode(D);
-    g->addNode(E);
-    g->addNode(F);
-    g->addNode(G);
+    std::vector<Node*> nodes = {A,B,C,D,E,F,G};
+
+    g->addNodes(nodes);
 
     g->addEdge(A,B,1);
     g->addEdge(A,C,2);
     g->addEdge(B,D,3);
     g->addEdge(B,E,4);
     g->addEdge(C,F,5);
-    g->addEdge(E,F,6);
+    g->addEdge(E,F,1);
     g->addEdge(F,G,7);
+
+    g->plot("p7_original_graph","original_graph",false,false,true);
 
 
     BFS<int,true,true> bfs(g,A);
     bfs.run();
 
-    A->reset();B->reset();C->reset();D->reset();
-    E->reset();F->reset();G->reset();
-
+    for (Node* node:nodes) node->reset();
+    
     DFS<int,true,true> dfs(g,A);
     dfs.run();
+    
+    for (Node* node:nodes) node->reset();
+    
+    Prims<int,true,true> prims(g);
+    int primsMinCost = prims.run();
+    
+    for (Node* node:nodes) node->reset();
+
+    Kruskal<int,true,true> kruskal(g);
+    int kruskalMinCost = kruskal.run();
+
+    std::cout << "Minimum cost of MST (Prims): " << primsMinCost << std::endl;
+    std::cout << "Minimum cost of MST (Kruskal): " << kruskalMinCost << std::endl;
 
     return 0;
 }
