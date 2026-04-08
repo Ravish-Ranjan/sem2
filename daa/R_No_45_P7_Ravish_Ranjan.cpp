@@ -2,6 +2,7 @@
 #include "./algos/DFS.cpp"
 #include "./algos/Prims.cpp"
 #include "./algos/Kruskals.cpp"
+#include "./algos/Dijkstra.cpp"
 
 int main(){
     Graph<int,true,true>* g = new Graph<int,true,true>();
@@ -43,12 +44,22 @@ int main(){
     int primsMinCost = prims.run();
     
     for (Node* node:nodes) node->reset();
-
+    
     Kruskal<int,true,true> kruskal(g);
     int kruskalMinCost = kruskal.run();
-
+    
     std::cout << "Minimum cost of MST (Prims): " << primsMinCost << std::endl;
     std::cout << "Minimum cost of MST (Kruskal): " << kruskalMinCost << std::endl;
+    
+    for (Node* node:nodes) node->reset();
+
+    Dijkstra<int,true> dijkstra(g,A);
+
+    std::unordered_map<Node*,int> distances = dijkstra.run();
+
+    for(const auto& pair:distances){
+        std::cout << "Distance from A to " << pair.first->name << ": " << pair.second << std::endl;
+    }
 
     return 0;
 }
