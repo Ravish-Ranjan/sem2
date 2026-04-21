@@ -8,15 +8,20 @@
 | Practical 3  | [R_No_45_P3_Ravish_Ranjan.cpp](./daa/R_No_45_P3_Ravish_Ranjan.cpp)   |
 | Practical 4  | [R_No_45_P4_Ravish_Ranjan.cpp](./daa/R_No_45_P4_Ravish_Ranjan.cpp)   |
 | Practical 5  | [R_No_45_P5_Ravish_Ranjan.cpp](./daa/R_No_45_P5_Ravish_Ranjan.cpp)   |
+| Practical 6  | [R_No_45_P6_Ravish_Ranjan.cpp](./daa/R_No_45_P6_Ravish_Ranjan.cpp)   |
+| Practical 7  | [R_No_45_P7_Ravish_Ranjan.cpp](./daa/R_No_45_P7_Ravish_Ranjan.cpp)   |
 
 ## Artificial Inteligence and Machine Learning
 
-| Practical            | Codefile                                                              |
-| -------------------- | --------------------------------------------------------------------- |
-| TicTacToe AIvsAI     | [ticTacToe/ticTacToeAIvsAI.cpp](./aiml/ticTacToe/ticTacToeAIvsAI.cpp) |
-| TicTacToe PlayervsAI | [ticTacToe/ticTacToevsAI.cpp](./aiml/ticTacToe/ticTacToevsAI.cpp)     |
-| Water Jug            | [waterJug/waterJug.cpp](./aiml/waterJug/waterJug.cpp)                 |
-| Water Jug Optimized  | [waterJug/waterJugOpti.cpp.cpp](./aiml/waterJug/waterJugOpti.cpp.cpp) |
+| Practical            | Codefile                                                               |
+| -------------------- | ---------------------------------------------------------------------- |
+| TicTacToe AIvsAI     | [ticTacToe/ticTacToeAIvsAI.cpp](./aiml/ticTacToe/ticTacToeAIvsAI.cpp)  |
+| TicTacToe PlayervsAI | [ticTacToe/ticTacToevsAI.cpp](./aiml/ticTacToe/ticTacToevsAI.cpp)      |
+| Water Jug            | [waterJug/waterJug.cpp](./aiml/waterJug/waterJug.cpp)                  |
+| Water Jug Optimized  | [waterJug/waterJugOpti.cpp](./aiml/waterJug/waterJugOpti.cpp)          |
+| Cryptography         | [cryptography.cpp](./aiml/cryptography.cpp)                            |
+| Logistic Regression  | [waterJug/Linear_Regression.ipynb](./aiml/Linear_Regression.ipynb)     |
+| Linear Regression    | [waterJug/Logistic_Regression.ipynb](./aiml/Logistic_Regression.ipynb) |
 
 ## Data Mining
 
@@ -34,13 +39,18 @@
 
 ## Operating Systems
 
-| Practical   | Codefile                                 |
-| ----------- | ---------------------------------------- |
-| Practical 1 | [Linux Bash Commands](./os/a1.md)        |
-| Practical 2 | [Fork and Sync](./os/a2.md)              |
-| Practical 3 | [Child Process File Writing](./os/a3.md) |
-| Practical 4 | [SRJF and Round Robin](./os/a4.md)       |
-| Practical 5 | [Premptive Priority](./os/a5.md)         |
+| Practical    | Codefile                                                |
+| ------------ | ------------------------------------------------------- |
+| Practical 1  | [Linux Bash Commands](./os/a1.md)                       |
+| Practical 2  | [Fork and Sync](./os/a2.md)                             |
+| Practical 3  | [Child Process File Writing](./os/a3.md)                |
+| Practical 4  | [SRJF and Round Robin](./os/a4.md)                      |
+| Practical 5  | [Premptive Priority](./os/a5.md)                        |
+| Practical 6  | [Peterson Solution](./os/a6.md)                         |
+| Practical 7  | [Couting Semaphores](./os/a7.md)                        |
+| Practical 8  | [Producer-Consumer Solution](./os/a8.md)                |
+| Practical 9  | [Memory Allocation](./os/a9.md)                         |
+| Practical 10 | [Single-threaded vs Muti-threaded process](./os/a10.md) |
 
 | Quiz  | pdf                                        |
 | ----- | ------------------------------------------ |
@@ -55,3 +65,6 @@
 | Practical1 | [Text Formatting](./swcat/Pract1.pdf)           |
 | Practical2 | [List Table and Newsletter](./swcat/Pract2.pdf) |
 | Practical3 | [Mathematical Formulas](./swcat/Pract3.pdf)     |
+| Practical4 | [Paragram and Citations](./swcat/Pract4.pdf)    |
+| Practical7 | [Matlab P1](./swcat/Pract7.pdf)                 |
+| Practical8 | [Matlab P2](./swcat/Pract8.pdf)                 |
